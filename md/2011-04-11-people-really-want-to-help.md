@@ -10,7 +10,7 @@ What it lacks is a cross-track scoreboard, i.e. some kind of championship, and/o
 
 I implemented one.
 
-After some initial beta testing (and ensuring I was near the top of the championship), I messaged the TrickyTrucks author with <a href="http://git.goeswhere.com/?p=tt.git;a=summary">the source of the scraper</a> and <a href="http://git.goeswhere.com/?p=ttscores.git;a=summary">of the web interface</a>, asking for permission to link to <a href="http://ttscores.goeswhere.com/">the website</a> on the official forum, so others could join us in competing for the championship title.
+After some initial beta testing (and ensuring I was near the top of the championship), I messaged the TrickyTrucks author with <a href="//git.goeswhere.com/?p=tt.git;a=summary">the source of the scraper</a> and <a href="//git.goeswhere.com/?p=ttscores.git;a=summary">of the web interface</a>, asking for permission to link to <a href="//ttscores.goeswhere.com/">the website</a> on the official forum, so others could join us in competing for the championship title.
 
 An aside, on licensing: Both of these components were released under the BSD.  That allows anyone, including the TrickyTrucks author, to use the code for any purpose, including incorporating it into his official website.  The component split was done such that there was a neat interface for him to implement on a non-scraper backend.  The best result for me would be for there to be an official API and an officially hosted version of the site, such that I never had to do anything ever again to continue appreciating it.
 
@@ -29,5 +29,5 @@ His response?  Delete the post, and change the server to have some additional, w
 
 This post brought to you by <a href="http://developer.spotify.com/en/libspotify/overview/">libspotify</a> being <a href="http://getsatisfaction.com/spotify/topics/libspotify_crashes_on_loading_access_violation">incompatible</a> with most 3rd party DLLs, probably due to the copy protection on their DLL.  Copy protection.  On something that requires a paid account, verified against their server.  Please tell them what you think about this on <a href="http://getsatisfaction.com/spotify/topics/libspotify_crashes_on_loading_access_violation">my GetSatisfaction thread</a> (apparently this is what passes as a bug tracker these days).
 
-This prompted me to waste ALL WEEKEND porting <a href="http://git.goeswhere.com/?p=foo_input_spotify.git;a=summary">foo_input_spotify</a> to <a href="http://despotify.se/">libdespotify</a>.  foo_input_spotify will increase the value of their product.  Why are they making my life miserable?  Perhaps it's unintentional.  Time will tell.
+This prompted me to waste ALL WEEKEND porting <a href="//git.goeswhere.com/?p=foo_input_spotify.git;a=summary">foo_input_spotify</a> to <a href="http://despotify.se/">libdespotify</a>.  foo_input_spotify will increase the value of their product.  Why are they making my life miserable?  Perhaps it's unintentional.  Time will tell.
 

@@ -4,7 +4,7 @@ date: 2011-04-22 21:50:10+00:00
 
 I have a set of tiny utilities that I use on a daily basis but have never bothered to release.
 
-All are in the <a href="http://b.goeswhere.com/tinies-v001.7z">tinies v001 archive</a>, in both x64 and legacy format.  <a href="http://b.goeswhere.com/tinies-syms-v001.7z">Symbols</a>, <a href="http://git.goeswhere.com/?p=tinies.git;a=tag;h=refs/tags/v001">source and signatures</a> are available.  No installer is available; just drop them into your All Programs -> Startup folder.
+All are in the <a href="//b.goeswhere.com/tinies-v001.7z">tinies v001 archive</a>, in both x64 and legacy format.  <a href="//b.goeswhere.com/tinies-syms-v001.7z">Symbols</a>, <a href="//git.goeswhere.com/?p=tinies.git;a=tag;h=refs/tags/v001">source and signatures</a> are available.  No installer is available; just drop them into your All Programs -> Startup folder.
 
 <hr/>
 
@@ -26,7 +26,7 @@ And, for more niche users:
 
 <hr/>
 
-<img style="float: left; padding: 2em" src="http://b.goeswhere.com/powerstatustray.png"/>
+<img style="float: left; padding: 2em" src="//b.goeswhere.com/powerstatustray.png"/>
 
 <strong>powerstatustray.exe</strong> shows which drives are spun-up, and notifies you when a drive spins up or down.  (Yes, actually, this one was released before.)
 

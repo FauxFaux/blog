@@ -10,7 +10,7 @@ He showed .NET expressions, a wonderful feature whereby the actual nature of a p
 
 He, however, claimed that Java lacks this feature.  This is not the case.
 
-<a href="http://git.goeswhere.com/?p=dmnp.git;a=blob;f=expr/src/test/java/com/goeswhere/dmnp/expr/ExpressionTest.java">ExpressionTest</a> shows various uses of this in Java; basically:
+<a href="//git.goeswhere.com/?p=dmnp.git;a=blob;f=expr/src/test/java/com/goeswhere/dmnp/expr/ExpressionTest.java">ExpressionTest</a> shows various uses of this in Java; basically:
 
 <pre>Expression.toSQL(new Predicate&lt;FooDTO&gt;() { @Override public boolean matches(FooDTO t) { t.a == 7; } });</pre>
 
@@ -31,4 +31,4 @@ becomes:
 
 And, etc.
 
-<a href="http://git.goeswhere.com/?p=dmnp.git;a=tree;f=expr/src/main/java/com/goeswhere/dmnp/expr">The implementation</a>, if the devil compels you to look.
+<a href="//git.goeswhere.com/?p=dmnp.git;a=tree;f=expr/src/main/java/com/goeswhere/dmnp/expr">The implementation</a>, if the devil compels you to look.

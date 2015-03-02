@@ -2,7 +2,7 @@ title: My gitolite set-up
 slug: my-gitolite-set-up
 date: 2011-12-29 18:12:34+00:00
 
-I'm paranoid, but also poor.  I use <a href="https://github.com/sitaramc/gitolite">gitolite</a> to control access to <a href="http://git.goeswhere.com/">my git repositories</a>, because <a href="https://github.com/plans">github wanted $200/month</a> to meet half of my requirements, and wern't interested in negotiating (I tried).
+I'm paranoid, but also poor.  I use <a href="https://github.com/sitaramc/gitolite">gitolite</a> to control access to <a href="//git.goeswhere.com/">my git repositories</a>, because <a href="https://github.com/plans">github wanted $200/month</a> to meet half of my requirements, and wern't interested in negotiating (I tried).
 
 Like github, I have two types of git repositories.  Public repositories; which show up on gitweb and git-daemon and etc., that everyone can access; and private repositories, which contain my bank details.
 

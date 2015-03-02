@@ -6,7 +6,7 @@ It's a sad fact of life that many developers spend a good deal of time staring a
 
 My personal favorite situation is when you get to:
 <pre>Exception in thread "main" java.lang.NullPointerException
-&nbsp;&nbsp;&nbsp;&nbsp;at com.goeswhere.dmnp.linenos.B.foo(<a href="http://git.goeswhere.com/?p=dmnp.git;a=blob;f=linenos/src/test/java/com/goeswhere/dmnp/linenos/B.java;h=889c1de3871669b72c3f86abd981419e00f625f3;hb=HEAD">B.java</a>:13)</pre>
+&nbsp;&nbsp;&nbsp;&nbsp;at com.goeswhere.dmnp.linenos.B.foo(<a href="//git.goeswhere.com/?p=dmnp.git;a=blob;f=linenos/src/test/java/com/goeswhere/dmnp/linenos/B.java;h=889c1de3871669b72c3f86abd981419e00f625f3;hb=HEAD">B.java</a>:13)</pre>
 
 ..and, line 13 is:
 
@@ -16,7 +16,7 @@ Basically, the end of any happiness.
 
 <hr style="margin: 2em"/>
 
-<a href="http://git.goeswhere.com/?p=dmnp.git;a=tree;f=linenos">LineNos</a> can fix this:
+<a href="//git.goeswhere.com/?p=dmnp.git;a=tree;f=linenos">LineNos</a> can fix this:
 
 <pre>$ java -Xbootclasspath/p:linenos.jar -javaagent:linenos.jar=com/goeswhere com.goeswhere.dmnp.linenos.B
 Exception in thread "main" java.lang.NullPointerException

@@ -2,7 +2,7 @@ title: PuTTY Tray
 slug: putty-tray
 date: 2011-10-09 15:58:15+00:00
 
-I've released an updated version of PuTTY Tray to <a href="http://puttytray.goeswhere.com/">puttytray.goeswhere.com</a>, <del datetime="2011-12-21T11:36:45+00:00">direct download: <a href="http://b.goeswhere.com/putty-tray-v004/putty.exe">putty.exe p0.61-t004</a></del> please see the site for the latest version and details.
+I've released an updated version of PuTTY Tray to <a href="//puttytray.goeswhere.com/">puttytray.goeswhere.com</a>, <del datetime="2011-12-21T11:36:45+00:00">direct download: <a href="//b.goeswhere.com/putty-tray-v004/putty.exe">putty.exe p0.61-t004</a></del> please see the site for the latest version and details.
 
 This is a fork of <a href="http://haanstra.eu/putty/">Barry Haanstra's PuTTY Tray</a>, which is abandoned.
 

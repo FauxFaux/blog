@@ -6,13 +6,13 @@ I decided on Thursday that I don't actually use my right-thumb for any keys whil
 
 I decided to add something useful:
 
-<img src="http://b.goeswhere.com/msne4knipple.jpg" alt="MS Ergonomic Keyboard 4000 with nipple" />
+<img src="//b.goeswhere.com/msne4knipple.jpg" alt="MS Ergonomic Keyboard 4000 with nipple" />
 
 If you can't tell by the head, it's the remains of an xbox 360 controller:
 
-<img src="http://b.goeswhere.com/msne4kunder.jpg" alt="..and what it looks like underneath" />
+<img src="//b.goeswhere.com/msne4kunder.jpg" alt="..and what it looks like underneath" />
 
-This, combined with a modified version of <a href="http://b.goeswhere.com/mousex.cpp">mousex</a> gives you an almost usable mouse.
+This, combined with a modified version of <a href="//b.goeswhere.com/mousex.cpp">mousex</a> gives you an almost usable mouse.
 
 Now I just need to train myself to use it.
 
