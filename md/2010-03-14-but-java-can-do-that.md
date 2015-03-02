@@ -12,7 +12,7 @@ He, however, claimed that Java lacks this feature.  This is not the case.
 
 <a href="http://git.goeswhere.com/?p=dmnp.git;a=blob;f=expr/src/test/java/com/goeswhere/dmnp/expr/ExpressionTest.java">ExpressionTest</a> shows various uses of this in Java; basically:
 
-<pre>Expression.toSQL(new Predicate<foodto>() { @Override public boolean matches(FooDTO t) { t.a == 7; } });</foodto></pre>
+<pre>Expression.toSQL(new Predicate&lt;FooDTO&gt;() { @Override public boolean matches(FooDTO t) { t.a == 7; } });</pre>
 
 will return:
 

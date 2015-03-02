@@ -13,7 +13,7 @@ Today I discovered Java's "inline C++" keyword, //\u000a/*, which makes a Java/C
 #define static
 #define void int
 struct {
-&nbsp;&nbsp;std::ostream &println(const char *c) {
+&nbsp;&nbsp;std::ostream &amp;println(const char *c) {
 &nbsp;&nbsp;&nbsp;&nbsp;return std::cout &lt;&lt; c < < std::endl;
 &nbsp;&nbsp;}
 } out;
