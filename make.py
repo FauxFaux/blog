@@ -42,6 +42,9 @@ for name in glob("md/*.md"):
             raise 'No slug: ' + name
         files[slug] = Item(headers['title'], slug, parser.parse(headers['date']), f.read())
 
+dates=sorted(set(((item.date.strftime('/%Y/%m'), item.date.strftime('%Y-%m'))
+    for item in files.values())), reverse=True)
+
 def url_of(item):
     return item.date.strftime("%Y/%m/") + item.slug + "/"
 
@@ -49,12 +52,14 @@ def write_page(path, template, **args):
     with open_out(path) as f:
         f.write(templates.get_template('index.html').render(
             content=templates.get_template(template).render(args),
+            dates=dates,
             title='???'))
 
 def render_post(item):
     return templates.get_template('post.html').render(
             content=markdown(item.content),
             url=url_of(item),
+            date=item.date.strftime('%Y-%m-%d'),
             title=item.title)
 
 for slug, item in files.items():
@@ -67,3 +72,6 @@ write_page('index.html', 'list.html',
             items=sorted(files.values(), reverse=True, key=lambda item: item.date),
             render_post=render_post)
 
+for static in ['main.css']:
+    with open_out('static/' + static) as f:
+        f.write(templates.get_template(static).render())

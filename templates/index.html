@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/main.css" />
     <title>{{ title }}</title>
 </head>
 <body>
 <div class="container-fluid">
-    {{ content }}
+    <div class="page-header">
+        <h1><a href="/">Faux' blog</a></h1>
+        <p class="lead">On goeswhere's development... once it begins, anyway...</p>
+    </div>
+    <div class="col-md-10">
+        {{ content }}
+    </div>
+    <div class="col-md-1">
+        <h3>Search</h3>
+        <p><input size="10" type="text"/><input type="submit" value="Go"/></p>
+    </div>
+    <div class="col-md-1">
+        <h3>Monthly</h3>
+        <ul class="list-unstyled">
+        {% for date in dates %}
+            <li><a href="{{ date[0] }}">{{ date[1] }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
 </div>
 </body>
 </html>
