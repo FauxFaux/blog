@@ -48,12 +48,17 @@ dates=sorted(set(((item.date.strftime('/%Y/%m'), item.date.strftime('%Y-%m'))
 def url_of(item):
     return item.date.strftime("%Y/%m/") + item.slug + "/"
 
-def write_page(path, template, **args):
+def write_page(path, template, title, **args):
+    if not title:
+        title='Faux\' blog'
+    else:
+        title='Faux\' blog: ' + title
+
     with open_out(path) as f:
         f.write(templates.get_template('index.html').render(
             content=templates.get_template(template).render(args),
             dates=dates,
-            title='???'))
+            title=title))
 
 def render_post(item):
     return templates.get_template('post.html').render(
@@ -64,11 +69,11 @@ def render_post(item):
 
 for slug, item in files.items():
     sub = url_of(item)
-    write_page(sub + 'index.html', 'single.html',
+    write_page(sub + 'index.html', 'single.html', item.title,
         render_post=render_post,
         item=item)
 
-write_page('index.html', 'list.html',
+write_page('index.html', 'list.html', None,
             items=sorted(files.values(), reverse=True, key=lambda item: item.date),
             render_post=render_post)
 
