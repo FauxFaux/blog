@@ -15,9 +15,24 @@ from markdown import markdown
 # python3-jinja2
 import jinja2
 
+# easy_install3 --user feedgen # prints errors but seems to work
+from feedgen.feed import FeedGenerator
+import pytz
+
 templates = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
-Item = namedtuple('Item', ['title', 'slug', 'date', 'content'])
+feed_root='https://blog.goeswhere.com'
+fg = FeedGenerator()
+fg.id(feed_root)
+fg.title('Faux\' Blog')
+fg.author({'name': 'Chris West (Faux)'})
+fg.language('en')
+fg.link(href=feed_root, rel='alternate')
+fg.description('Faux\' (mostly) technical blog')
+
+tz=pytz.timezone('Europe/London')
+
+Item = namedtuple('Item', ['title', 'slug', 'date', 'content', 'mtime'])
 
 def open_out(path):
     path = 'out/' + path
@@ -40,7 +55,9 @@ for name in glob("md/*.md"):
         slug = headers['slug']
         if not slug:
             raise 'No slug: ' + name
-        files[slug] = Item(headers['title'], slug, parser.parse(headers['date']), f.read())
+        files[slug] = Item(headers['title'], slug,
+                parser.parse(headers['date']), f.read(),
+                os.path.getmtime(name))
 
 dates=sorted(set(((item.date.strftime('/%Y/%m'), item.date.strftime('%Y-%m'))
     for item in files.values())), reverse=True)
@@ -117,6 +134,23 @@ def by_date(format, items):
 for by_dates in [by_date('%Y/%m/', files.values()), by_date('%Y/', files.values())]:
     for month, items in by_dates.items():
         write_list(month, items, month)
+
+in_feed=sorted(files.values(), reverse=True, key=lambda item: item.date)[0:10]
+
+for item in in_feed:
+    fe=fg.add_entry()
+    full_url=feed_root+url_of(item)
+    fe.id(full_url)
+    fe.link(href=full_url, rel='alternate')
+    fe.title(item.title)
+    fe.content(item.content[0:300] + '...')
+    fe.updated(tz.localize(datetime.fromtimestamp(item.mtime)))
+
+os.makedirs('out/feed/atom')
+os.makedirs('out/feed/rss')
+fg.atom_file('out/feed/atom/index.xml')
+fg.rss_file('out/feed/rss/index.xml')
+fg.rss_file('out/feed/index.xml')
 
 for static in ['main.css']:
     with open_out('static/' + static) as f:
