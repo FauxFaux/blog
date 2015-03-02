@@ -1,6 +1,11 @@
 div.date {
     float: right;
     padding: 0.5em;
+    margin: 1em;
+    margin-right: 0;
+}
+
+div.date,div.sidepanel,div.post {
     border: 1px #eee solid;
     border-radius: 5px;
 }
@@ -14,6 +19,18 @@ div.page-header {
 div.page-header h1 {
     padding-left: 15px;
     margin-top: 0;
+}
+
+div.sidepanel {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 30px;
+}
+
+div.post {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 120%;
 }
 
 div.post img {
