@@ -13,14 +13,25 @@
 </div>
 
 <div class="container-fluid">
-    <div class="col-md-10">
+    <div class="col-md-11">
         {{ content }}
     </div>
     <div class="col-md-1">
         <h3>Search</h3>
         <p><input size="10" type="text"/><input type="submit" value="Go"/></p>
-    </div>
-    <div class="col-md-1">
+        <h3>Links</h3>
+        <ul class="list-unstyled">
+            <li><a href="/2007/01/about-me">About Me</a></li>
+            <li><a href="//puttytray.goeswhere.com/">PuTTYTray</a></li>
+            <li><a href="https://twitter.com/fauxicles">Faux' Twitter</a></li>
+            <li><a href="https://github.com/FauxFaux/" rel="me">Faux' GitHub</a></li>
+            <li><a href="http://git.goeswhere.com/" rel="me">Faux' gitweb</a></li>
+            <li><a href="https://launchpad.net/~faux" rel="me">Faux' launchpad</a></li>
+            <li><a href="http://uk.linkedin.com/in/chrisrwest" rel="me">Faux' LinkedIn</a></li>
+            <li><a href="http://www.last.fm/user/Faux/" rel="me">Faux' last.fm</a></li>
+            <li><a href="http://faux.uwcs.co.uk/" rel="me">Faux' UWCS</a></li>
+            <li><a href="http://taglibhandler.sourceforge.net/" rel="me">Taglib Handler</a></li>
+        </ul>
         <h3>Monthly</h3>
         <ul class="list-unstyled">
         {% for date in dates %}

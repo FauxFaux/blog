@@ -15,3 +15,7 @@ div.page-header h1 {
     padding-left: 15px;
     margin-top: 0;
 }
+
+div.post img {
+    max-width: 100%
+}
