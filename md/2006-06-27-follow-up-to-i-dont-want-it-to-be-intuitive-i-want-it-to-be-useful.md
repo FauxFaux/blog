@@ -1,5 +1,5 @@
-title: Follow-up to: "I don’t want it to be intuitive, I want it to be useful."
-slug: follow-up-to-i-don%e2%80%99t-want-it-to-be-intuitive-i-want-it-to-be-useful
+title: Follow-up to: "I don't want it to be intuitive, I want it to be useful."
+slug: follow-up-to-i-dont-want-it-to-be-intuitive-i-want-it-to-be-useful
 date: 2006-06-27 15:35:30+00:00
 
 I just read <a href="http://blog.entek.org.uk/?p=33">I don’t want it to be intuitive, I want it to be useful</a>, and felt that it needed a reply:

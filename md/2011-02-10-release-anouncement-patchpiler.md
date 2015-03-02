@@ -24,7 +24,7 @@ It lets you name your new pile, let's call it blue.  This means you can pile pat
 
 Frequently you'll want to copy patches between piles.
 
-<pre>papi copy</code> lets you copy a patch from one pile to another.
+<code>papi copy</code> lets you copy a patch from one pile to another.
 
 Something cool has happened in "yellow" and you want in?  Just copy it across!  The patch is now in both piles, but this is okay, as they're currently unrelated.
 
@@ -32,7 +32,7 @@ Something cool has happened in "yellow" and you want in?  Just copy it across!  
 
 <img src="http://b.goeswhere.com/papi-update.png" style="float: left; padding: 2em"/>
 
-<pre>papi re-pile</code> allows you to catch-up with another pile's entire history.
+<code>papi re-pile</code> allows you to catch-up with another pile's entire history.
 
 It just "re-piles" your patches on top of the patches from the other pile. This doesn't affect the other pile; it's still a separate stream of development.
 
@@ -49,4 +49,6 @@ This results in a nice, clean pile of patches, leaving you ready to continue dev
 <div style="height: 2em;"></div><hr style="clear: left"/><div style="height: 2em;"></div>
 <!--more-->
 
-Spoilers:  <code>papi</code> is just <code>git</code>.  <a href="http://b.goeswhere.com/papi.svgz">Images' source</a>.
+Spoilers:  <code>papi</code> is just <code>git</code>.
+
+<a href="http://b.goeswhere.com/papi.svgz">Images' source</a>.

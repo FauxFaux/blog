@@ -5,9 +5,11 @@ date: 2008-12-14 02:03:00+00:00
 I decided on Thursday that I don't actually use my right-thumb for any keys whilst typing, my left exclusively operates the space-bar, and there are no useful modifier keys on the right-hand side of a <a href="http://www.microsoft.com/hardware/mouseandkeyboard/productdetails.aspx?pid=043">Microsoft Ergonomic 4000 Keyboard</a>.
 
 I decided to add something useful:
+
 <img src="http://b.goeswhere.com/msne4knipple.jpg" alt="MS Ergonomic Keyboard 4000 with nipple" />
 
 If you can't tell by the head, it's the remains of an xbox 360 controller:
+
 <img src="http://b.goeswhere.com/msne4kunder.jpg" alt="..and what it looks like underneath" />
 
 This, combined with a modified version of <a href="http://b.goeswhere.com/mousex.cpp">mousex</a> gives you an almost usable mouse.

@@ -14,9 +14,8 @@ As explained <a href="http://www.gpsinformation.org/dale/nmea.htm#RMC">on gpsinf
 	<li><strong>Applications: </strong> In this form, this information is completely useless to applications like <a href="http://www.microsoft.com/mappoint/default.mspx">Microsoft MapPoint 2004</a>. Although this is incredibly poorly documented, they require the latitude and longitude to be given in degrees, as a decimal, with positive for north and east.</li>
 	<li><strong>Conversion: </strong> Once you know this, the conversion is pretty trivial. Assuming that all the points are N and E, you simply need to divide each part by 100, the divide the fractional part by 0.6, eg:
 <pre>
-#!php
 // Quick and nasty conversion for N,E NMEA data to decimal degrees.
-< ?
+&lt;?
 function conv($i)
 {
         return round(floor($i) + ($i-floor($i))/0.6, 4);
@@ -31,7 +30,7 @@ foreach (file('foo.txt') as $line)
         $out.= conv($t[1]/100);
         echo $out . "\n";
 }
-</code></code></li>
+</pre></li>
 	<li><strong>Importing: </strong> Now the conversion has been done, you have a file consiting of lines that look something like:
 <pre>
 52.2305,0.0703

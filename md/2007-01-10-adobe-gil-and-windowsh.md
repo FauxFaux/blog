@@ -61,7 +61,7 @@ c:\sdk\libs\gil\core\channel.hpp(92) : warning C4003: not enough actual paramete
 c:\sdk\libs\jmorecfg.h(215) : warning C4005: 'FAR' : macro redefinition
         C:\Program Files\Microsoft Visual Studio 8\VC\PlatformSDK\include\windef.h(145) : see previous definition of 'FAR'
 c:\sdk\libs\gil\core\color_convert.hpp(148) : error C2589: '(' : illegal token on right side of '::'
-        c:\sdk\libs\gil\core\color_convert.hpp(221) : see reference to function template instantiation 'void gil::color_converter_default_impl&lt;lt;T1,C1,T2,C2&gt;::operator ()&lt;lt;SrcP,DstP&gt;(const P1 &,P2 &) const' being compiled
+        c:\sdk\libs\gil\core\color_convert.hpp(221) : see reference to function template instantiation 'void gil::color_converter_default_impl&lt;lt;T1,C1,T2,C2&gt;::operator ()&lt;lt;SrcP,DstP&gt;(const P1 &amp;,P2 &amp;) const' being compiled
         with
         [
             T1=SrcChannel,
