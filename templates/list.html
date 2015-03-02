@@ -2,3 +2,15 @@
     {{ render_post(item) }}
     <hr/>
 {% endfor %}
+{% if prev is not none or next is not none %}
+<p class="text-center">
+    {% if prev is not none %}
+        <a href="/{{ prev }}">« Prev</a>
+    {% endif %}
+        -
+    {% if next is not none %}
+        <a href="/{{ next }}">Next »</a>
+    {% endif %}
+</p>
+<hr/>
+{% endif %}

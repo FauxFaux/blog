@@ -83,10 +83,29 @@ for slug, item in files.items():
         render_post=render_post,
         item=item)
 
-def write_list(path, items, title):
-    return write_page(path + 'index.html', 'list.html', title,
-            items=sorted(items, reverse=True, key=lambda item: item.date),
-            render_post=render_post)
+def write_list(base_path, items, title):
+    items=sorted(items, reverse=True, key=lambda item: item.date)
+    per_page=6
+    chunks=[items[x:x+per_page] for x in range(0, len(items), per_page)]
+    for idx, chunk in enumerate(chunks):
+        path=base_path
+        prev=None
+        next=None
+        if 0 != idx:
+            path=path + 'page/' + str(idx+1) + '/'
+            if 1 != idx:
+                prev=base_path + 'page/' + str(idx) + '/'
+            else:
+                prev=base_path
+
+        if len(chunks)-1 != idx:
+            next=base_path + 'page/' + str(idx+2) + '/'
+
+        write_page(path + 'index.html', 'list.html', title,
+                items=chunk,
+                next=next, prev=prev,
+                render_post=render_post)
+
 write_list('', files.values(), None)
 
 def by_date(format, items):
