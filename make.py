@@ -1,11 +1,21 @@
 #!/usr/bin/env python3
 
-from markdown import markdown
-from glob import glob
 from collections import namedtuple
+from glob import glob
+import os
+
+
+#python3-datetime
 from datetime import datetime
 from dateutil import parser
-import os
+
+# python3-markdown
+from markdown import markdown
+
+# python3-jinja2
+import jinja2
+
+templates = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
 Item = namedtuple('Item', ['title', 'slug', 'date', 'content'])
 
@@ -35,13 +45,25 @@ for name in glob("md/*.md"):
 def url_of(item):
     return item.date.strftime("%Y/%m/") + item.slug + "/"
 
+def write_page(path, template, **args):
+    with open_out(path) as f:
+        f.write(templates.get_template('index.html').render(
+            content=templates.get_template(template).render(args),
+            title='???'))
+
+def render_post(item):
+    return templates.get_template('post.html').render(
+            content=markdown(item.content),
+            url=url_of(item),
+            title=item.title)
 
 for slug, item in files.items():
     sub = url_of(item)
-    with open_out(sub + "index.html") as f:
-        f.write(markdown(item.content))
+    write_page(sub + 'index.html', 'single.html',
+        render_post=render_post,
+        item=item)
 
-with open_out("index.html") as f:
-    for item in sorted(files.values(), reverse=True, key=lambda item: item.date):
-        f.write('<a href="' + url_of(item) + '"><h1>' + item.title + '</h1></a>\n')
-        f.write(markdown(item.content))
+write_page('index.html', 'list.html',
+            items=sorted(files.values(), reverse=True, key=lambda item: item.date),
+            render_post=render_post)
+
