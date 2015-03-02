@@ -4,6 +4,7 @@ from collections import namedtuple, defaultdict
 from glob import glob
 import os
 import re
+import shutil
 
 #python3-datetime
 from datetime import datetime
@@ -155,3 +156,5 @@ fg.rss_file('out/feed/index.xml')
 for static in ['main.css']:
     with open_out('static/' + static) as f:
         f.write(templates.get_template(static).render())
+
+shutil.copytree('images', 'out/images')

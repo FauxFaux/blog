@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/static/main.css" />
+    <link rel="alternate" type="application/rss+xml" href="/feed/rss/" />
+    <link rel="alternate" type="application/atom+xml" href="/feed/atom/" />
+
     <title>{{ title }}</title>
 </head>
 <body>
@@ -17,6 +20,14 @@
         {{ content }}
     </div>
     <div class="col-md-2">
+        <div class="sidepanel">
+            <h3>
+                <a href="/feed/rss/">
+                    <img src="/images/rss.png" width="20" height="20" alt="rss"/>
+                    RSS Feed
+                </a>
+            </h3>
+        </div>
         <div class="sidepanel">
             <h3>Search</h3>
             <p><input size="10" type="text"/><input type="submit" value="Go"/></p>
