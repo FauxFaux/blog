@@ -12,7 +12,7 @@ I'd hope that most people would care enough to fix tags that are (incorrectly) w
 
 There are quite a few automatic solutions to manually fixing these tags, starting with FreeDB that's already been mentioned, my favourite being <a href="http://musicbrainz.org/">MusicBrainz</a>. 
 
-They have a <strong>wonderful</strong> tool called Picard that will allow you to get information from their database into your files, including the correct spelling of <a href="http://musicbrainz.org/artist/50fc4742-1389-45a0-8c6f-6a5159ae20c2.html" title="Show artist at MusicBrainz"><img src="http://musicbrainz.org/images/entity/artist.gif" alt="artist" style="vertical-align: bottom; border: 0px; margin-right: 2px;" /><b>ᛏᛣᚱ</b></a>. <a href="http://musicbrainz.org/doc/PicardDownload">Picard</a> has a <a href="http://musicbrainz.org/doc/HowToTagFilesWithPicard">user guide</a>, I've written an <a href="http://faux.uwcs.co.uk/picardguide/">alternative Picard user guide</a> to illustrate the way I tag stuff.
+They have a <strong>wonderful</strong> tool called Picard that will allow you to get information from their database into your files, including the correct spelling of <a href="http://musicbrainz.org/artist/50fc4742-1389-45a0-8c6f-6a5159ae20c2.html" title="Show artist at MusicBrainz"><b>ᛏᛣᚱ</b></a>. <a href="http://musicbrainz.org/doc/PicardDownload">Picard</a> has a <a href="http://musicbrainz.org/doc/HowToTagFilesWithPicard">user guide</a>, I've written an <a href="http://faux.uwcs.co.uk/picardguide/">alternative Picard user guide</a> to illustrate the way I tag stuff.
 
 Assuming you don't care about the correct usage of the artist names, nor having credit correctly given for remixes, etc., why would you bother to process your music with Picard?
 
