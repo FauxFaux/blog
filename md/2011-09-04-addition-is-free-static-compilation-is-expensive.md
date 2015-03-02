@@ -26,14 +26,14 @@ i.e. including compilation time on an entirely unoptimised compiler, Java is sti
 <hr style="margin: 2em"/>
 
 Testcases:
-<code>
+<pre>
 time (N=10000000; printf "class A { public static void main(String... arg) { long j = 0; for(long i = 0; i < $N; ++i) { j += i; } System.out.println(j); } }" > A.java && javac A.java && java A)
 time (N=10000000; printf "class A { public static void main(String... arg) { long j = 0; for(long i = 0; i < $N; ++i) { j += i; } System.out.println(j); } }" > A.java && javac A.java && java -Xint A)
 time (N=10000000; printf "class A { public static void main(String... arg) { long j = 0; for(long i = 0; i < $N; ++i) { j += i; } System.out.println(j); } }" > A.java && javac -J-Xint A.java && java -Xint A)
 time (N=10000000; printf "class A { public static void main(String... arg) { long j = 0; for(long i = 0; i < $N; ++i) { j += i; } System.out.println(j); } }" > A.java && java -jar ecj.jar -source 1.5 A.java && java A)
 time (N=10000000; printf "j = 0\nfor i in range(1,$N):\n\tj = j + i\nprint j" | python -)
 time (N=10000000; printf 'my $j = 0; for ($i = 0; $i < '$N'; ++$i){ $j += $i; } print $j' | perl -w)
-</code>
+</pre>
 
 
 Versions, from Debian stable:
@@ -42,4 +42,4 @@ Python 2.6.6 (r266:84292, Dec 26 2010, 22:31:48)
 perl, v5.10.1
 OpenJDK Runtime Environment (IcedTea6 1.8.7) (6b18-1.8.7-2~squeeze1), OpenJDK 64-Bit Server VM (build 14.0-b16, mixed mode)
 ecj 3.5.1
-</code>
+</pre>

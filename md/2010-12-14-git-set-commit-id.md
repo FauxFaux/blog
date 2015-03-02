@@ -8,7 +8,7 @@ Stock git doesn't have an option to pick the commit id for a commit; this seems 
 
 For example, everyone knows that the base commit in a repository should have a low number:
 
-<code>$ git init
+<pre>$ git init
 Initialized empty Git repository in ./.git/
 $ git add -A
 $ git commit --set-commit-id 0000000 -a -m "Base."
@@ -16,11 +16,11 @@ Searching:  46% (12593/26843), done.
 [master (root-commit) 0000000] Base.
  1 files changed, 1 insertions(+), 0 deletions(-)
  create mode 100644 myfile
-</code>
+</pre>
 
 
 If you've already messed up your repository, a handy fixing script is provided:
-<code>$ git lg
+<pre>$ git lg
 * fe5e2ee - (HEAD, master) work, work, work, it's all I do
 * a2c1ec8 - work, work, work
 * e580e5e - work, work
@@ -40,7 +40,7 @@ $ git lg
 * 0000020 - work, work
 * 0000010 - work
 * 0000000 - base
-</code>
+</pre>
 
 Much more usable!  This <a href="http://git.goeswhere.com/?p=seqed.git;a=summary">example repository is available for inspection</a>.  gitweb doesn't show the commit ids on the log screen, but you can mouse-over and see them in the URLs.
 

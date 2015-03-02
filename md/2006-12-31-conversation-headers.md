@@ -13,8 +13,8 @@ Having read <a href="http://skumby.uwcs.co.uk/blog/">Skumby's</a> <a href="http:
 	<li><code>&lt; new&gt; ne1 have ne experience with {blank}?
 </code> 
 or
-<code> &lt; new&gt; can i ask a question about {blank}?
-</code>
+<pre> &lt; new&gt; can i ask a question about {blank}?
+</pre>
 </li></ol>
 
 Both of those questions are complete time-wasters (and would never <em>get</em> to "How are you?!"), the second set admittedly yields some information (maybe even enough for a no), but contains no information that wouldn't be in your "smart question" anyway. Grr.

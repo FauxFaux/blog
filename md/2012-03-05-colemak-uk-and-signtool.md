@@ -8,14 +8,14 @@ I remembered it wasn't signed when the Windows 8 beta started nagging me about i
 
 However, taking the generated binaries from before (and verifying them with GPG), signtool is perfectly happy to sign the <code>MSI</code>s and the <code>DLL</code>s, but the <code>setup.exe</code>, the actual launcher that asks for elevation in the first place gives:
 
-<code>$ signtool sign /a setup.exe
+<pre>$ signtool sign /a setup.exe
 Done Adding Additional Store
 SignTool Error: SignedCode::Sign returned error: 0x80070057
         The parameter is incorrect.
 SignTool Error: An error occurred while attempting to sign: setup.exe
 
 Number of errors: 1
-</code>
+</pre>
 
 Oh.
 

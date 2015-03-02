@@ -17,10 +17,10 @@ Reproduction steps follow.
 <!--more-->
 
 bzr 2.0.3 and git 1.5.6.5:
-<code>time ($CMD init &amp;&amp; for i in $(seq 200); do echo $i &gt;&gt; foo && touch bar$i &amp;&amp; $CMD add * &&gt;/dev/null &amp;&amp; $CMD commit -m "Whoosh"; done)</code>
+<pre>time ($CMD init &amp;&amp; for i in $(seq 200); do echo $i &gt;&gt; foo && touch bar$i &amp;&amp; $CMD add * &&gt;/dev/null &amp;&amp; $CMD commit -m "Whoosh"; done)</pre>
 
 darcs (which, admittedly, took about 200 seconds to work out how to commit to) 2.0.2:
-<code>time ($CMD init &amp;&amp; for i in $(seq 200); do echo $i &gt;&gt; foo &amp;&amp; touch bar$i &amp;&amp; $CMD add * &amp;&gt;/dev/null &amp;&amp; $CMD record -a -Aa -m "Whoosh"; done)</code>
+<pre>time ($CMD init &amp;&amp; for i in $(seq 200); do echo $i &gt;&gt; foo &amp;&amp; touch bar$i &amp;&amp; $CMD add * &amp;&gt;/dev/null &amp;&amp; $CMD record -a -Aa -m "Whoosh"; done)</pre>
 
 svn 1.5.1:
-<code>rm -rf ../repo; svnadmin create ../repo && svn co file:///var/tmp/repo . && time (for i in $(seq 200); do echo $i &gt;&gt; foo && touch bar$i && $CMD add * &amp;&amp; $CMD commit -m "Whoosh"; done)</code>
+<pre>rm -rf ../repo; svnadmin create ../repo && svn co file:///var/tmp/repo . && time (for i in $(seq 200); do echo $i &gt;&gt; foo && touch bar$i && $CMD add * &amp;&amp; $CMD commit -m "Whoosh"; done)</pre>

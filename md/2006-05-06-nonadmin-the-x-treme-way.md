@@ -18,11 +18,11 @@ Following my success with sed on various Linux machines (you don't want to know)
 
 In most cases the value will have been PUSHed, ie.
 
-<code>PUSH 80000002</code>
+<pre>PUSH 80000002</pre>
 
 This assembles to:
 
-<code>68  02 00 00 80</code>
+<pre>68  02 00 00 80</pre>
 
 Fire up <a href="http://www.chmaas.handshake.de/delphi/freeware/xvi32/xvi32.htm">XVI32</a>, open up the exe in question...
 

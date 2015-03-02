@@ -4,7 +4,7 @@ date: 2010-04-23 20:14:08+00:00
 
 Today I discovered Java's "inline C++" keyword, //\u000a/*, which makes a Java/C++ <a href="http://en.wikipedia.org/wiki/Polyglot_(computing)">polyglot</a> pretty easy:
 
-<code>
+<pre>
 //\u000a/*
 #include &lt;iostream&gt;
 
@@ -32,7 +32,7 @@ public class Polyglot {
 /*\u002a/
 }
 // */
-</code>
+</pre>
 
 Eclipse deals.. <a href="http://faux.uwcs.co.uk/eclipse-polyglot.png">okay</a>.  The red-underlining in the commented sections is for the spelling. &lt;3
-</code>
+</pre>

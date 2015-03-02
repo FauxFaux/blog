@@ -12,22 +12,22 @@ He, however, claimed that Java lacks this feature.  This is not the case.
 
 <a href="http://git.goeswhere.com/?p=dmnp.git;a=blob;f=expr/src/test/java/com/goeswhere/dmnp/expr/ExpressionTest.java">ExpressionTest</a> shows various uses of this in Java; basically:
 
-<code>Expression.toSQL(new Predicate<foodto>() { @Override public boolean matches(FooDTO t) { t.a == 7; } });</foodto></code>
+<pre>Expression.toSQL(new Predicate<foodto>() { @Override public boolean matches(FooDTO t) { t.a == 7; } });</foodto></pre>
 
 will return:
 
-<code>(a = 7)</code>
+<pre>(a = 7)</pre>
 
 Obviously this remains slightly more verbose while the Java lambda proposals are finalised, but the feature is hardly missing!
 
 Similarily,
-<code>return (t.a == 7 || t.a == 8 || t.a == 9) && "pony".equals(t.b);</code>
+<pre>return (t.a == 7 || t.a == 8 || t.a == 9) && "pony".equals(t.b);</pre>
 
 becomes:
 
-<code>(a = 7 AND b = 'pony') OR 
+<pre>(a = 7 AND b = 'pony') OR 
 (a = 8 AND b = 'pony') OR
-(a = 9 AND b = 'pony')</code>
+(a = 9 AND b = 'pony')</pre>
 
 And, etc.
 

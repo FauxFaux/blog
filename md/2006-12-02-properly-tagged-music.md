@@ -19,17 +19,17 @@ Assuming you don't care about the correct usage of the artist names, nor having 
 Along with ensuring that the files have the correct normal tags (that you'd normally see), it also puts extra information from the MusicBrainz database into your files, for instace, the sort-order name of each artist. This allows you to do fun things with your playlist, for instance, what I do with Foobar:
 
 <strong>Sort order:</strong>
-<code>$if(%MUSICBRAINZ_ARTISTID%%MUSICBRAINZ ARTIST ID%, ,)$if($strcmp(%MUSICBRAINZ ALBUM ARTIST ID%%MUSICBRAINZ_ALBUMARTISTID%,89ad4ac3-39f7-470e-963a-56509c546377),%album% - %MUSICBRAINZ ALBUM ID%%MUSICBRAINZ_ALBUMID%,%MUSICBRAINZ ALBUM ARTIST SORTNAME%%MUSICBRAINZ_ALBUMARTISTSORTNAME% - %MUSICBRAINZ ALBUM ARTIST ID%%MUSICBRAINZ_ALBUMARTISTID% - %album% - %MUSICBRAINZ ALBUM ID%%MUSICBRAINZ_ALBUMID%) - %album% - %tracknumber% - %album artist% - %title%</code>
+<pre>$if(%MUSICBRAINZ_ARTISTID%%MUSICBRAINZ ARTIST ID%, ,)$if($strcmp(%MUSICBRAINZ ALBUM ARTIST ID%%MUSICBRAINZ_ALBUMARTISTID%,89ad4ac3-39f7-470e-963a-56509c546377),%album% - %MUSICBRAINZ ALBUM ID%%MUSICBRAINZ_ALBUMID%,%MUSICBRAINZ ALBUM ARTIST SORTNAME%%MUSICBRAINZ_ALBUMARTISTSORTNAME% - %MUSICBRAINZ ALBUM ARTIST ID%%MUSICBRAINZ_ALBUMARTISTID% - %album% - %MUSICBRAINZ ALBUM ID%%MUSICBRAINZ_ALBUMID%) - %album% - %tracknumber% - %album artist% - %title%</pre>
 
 <strong>Playlist display:</strong>
-<code>%list_index%. 
+<pre>%list_index%. 
 $if(%MUSICBRAINZ_ARTISTID%%MUSICBRAINZ ARTIST ID%,,UT - )
 $if($strcmp($longest(%MUSICBRAINZ ALBUM ARTIST ID%,%MUSICBRAINZ_ALBUMARTISTID%),89ad4ac3-39f7-470e-963a-56509c546377),
 %album% - %tracknumber% - %album artist% - %title%,
 %album artist% - %album% - %tracknumber% - %title%)
 $tab()
 %length%
-</code>
+</pre>
 
 Note that both of those are whitespace-sensitive, the second is new-line insensitive, so has been split up slightly to make it at least sane to read.
 
@@ -37,7 +37,7 @@ Note that both of those are whitespace-sensitive, the second is new-line insensi
 
 These mean that your playlist will read something like this:
 
-<code>
+<pre>
 A Various Artists CD - 01 - Some Artist - Track Name
 A Various Artists CD - 02 - Some Other Artist - Track Name
 ...
@@ -48,24 +48,24 @@ Canned Beans - Album #1 - 01 - Track Name
 ...
 UT - BLERG
 ...
-</code>
+</pre>
 etc, where "Jim Bob" is a person's name, so will have a <em>sort order</em> of "Bob, Jim", and "Canned Beans" is a band, so will have a sort order of "Canned Beans". The "UT - " prefix on files at the end of the playlist mean that they need tagging.
 
 This has the wonderful effect of meaning that all of the albums by a single artist will be in the same place (as Jim Bob's are above) without Various Artist cds being broken up by artist, which makes no sense.
 
 Now that I've got my playlist back to how I like it, back to the original title of this post, Picard (0.7.2) sucks for writing tags with completely different names to different types of file, for instance:
 
-<code>M:\Compilations\Clubland\Seven (cd1)>cat 01.mp3 | <a href="http://grail.cba.csuohio.edu/~somos/xxd.c">xxd</a> | <a href="http://gnuwin32.sourceforge.net/">head</a> -n 16 | tail -n 3
+<pre>M:\Compilations\Clubland\Seven (cd1)>cat 01.mp3 | <a href="http://grail.cba.csuohio.edu/~somos/xxd.c">xxd</a> | <a href="http://gnuwin32.sourceforge.net/">head</a> -n 16 | tail -n 3
 00000d0: 0000 034d 7573 6963 4272 6169 6e7a 2041  ...MusicBrainz A
 00000e0: 6c62 756d 2041 7274 6973 7420 4964 0038  lbum Artist Id.8
-00000f0: 3961 6434 6163 332d 3339 6637 2d34 3730  9ad4ac3-39f7-470</code>
+00000f0: 3961 6434 6163 332d 3339 6637 2d34 3730  9ad4ac3-39f7-470</pre>
 
 ..against..
 
-<code>M:\Compilations\Clubland\Six (cd1)>head -n 2 "04.ogg" | xxd | head -n 19 | tail -n 3
+<pre>M:\Compilations\Clubland\Six (cd1)>head -n 2 "04.ogg" | xxd | head -n 19 | tail -n 3
 0000100: 4d55 5349 4342 5241 494e 5a5f 414c 4255  MUSICBRAINZ_ALBU
 0000110: 4d41 5254 4953 5449 443d 3839 6164 3461  MARTISTID=89ad4a
-0000120: 6333 2d33 3966 372d 3437 3065 2d39 3633  c3-39f7-470e-963</code>
+0000120: 6333 2d33 3966 372d 3437 3065 2d39 3633  c3-39f7-470e-963</pre>
 
 Grr.
 

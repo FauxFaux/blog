@@ -9,30 +9,30 @@ Like github, I have two types of git repositories.  Public repositories; which s
 My conf file consists of:
 
 <strong>A set of user groups:</strong> While gitolite supports multiple keys for one user, I prefer to treat my various machines as separate users, for reasons that'll become apparent later.
-<code>@faux    = admin fauxanoia fauxhoki fauxtak
+<pre>@faux    = admin fauxanoia fauxhoki fauxtak
 @trust   = @faux alice
 @semi    = fauxcodd fauxwilf bob
-</code>
+</pre>
 
 <strong>A set of repositories</strong>, both public and private:
-<code>@pubrepo = canslations
+<pre>@pubrepo = canslations
 @pubrepo = coke
 @pubrepo = cpptracer
 ...
 @privrepo = bank-details
 @privrepo = alices-bank-details
-</code>
+</pre>
 
 <strong>Descriptions</strong> for all the public repositories, so they show up in gitweb:
-<code>repo    coke
+<pre>repo    coke
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;coke = "Coke prices website"
 
 repo    cpptracer
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cpptracer = "aj's cppraytracer, now with g++ support"
-</code>
+</pre>
 
 And <strong>permissions</strong>:
-<code>repo    @pubrepo
+<pre>repo    @pubrepo
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RW+     =   @trust
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RW&nbsp;     =   @semi
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R&nbsp;&nbsp;       =   @all daemon gitweb
@@ -40,7 +40,7 @@ And <strong>permissions</strong>:
 
 repo    @privrepo
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RW+     =   @trust
-</code>
+</pre>
 
 This allows trusted keys to do anything, and semi-trusted keys (i.e. ones on machines where there are other people with root) to only append data (i.e. they can't destroy anything, and can't make any un-auditable changes).
 
@@ -51,9 +51,9 @@ This leaves only <code>/var/lib/gitolite/projects.list</code> (which is necessar
 
 For this, I have a gitolite-admin.git/hooks/post-update.secondary of:
 
-<code>#!/bin/sh
+<pre>#!/bin/sh
 chmod a+r /var/lib/gitolite/projects.list
 find /var/lib/gitolite -name description -exec chmod a+r {} +
-</code>
+</pre>
 
 Now, gitweb can display public projects fine, and local users can't discover or steal private repositories.

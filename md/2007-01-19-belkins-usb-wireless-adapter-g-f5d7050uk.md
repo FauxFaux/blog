@@ -8,13 +8,13 @@ Dear Belkin, <a href="http://www.joelonsoftware.com/items/2006/11/21.html">choic
 
 As usual, the device has a huge <strong>STOP: Run the Installation CD-ROM </strong><strong>FIRST</strong>. Inserting the CD and clicking "install" gets me:
 
-<code>---------------------------
+<pre>---------------------------
 Belkin Wireless USB Utility
 ---------------------------
 Click on icon if you want to communicate directly to another wireless computer near you (Ad-Hoc).
 ---------------------------
 OK
----------------------------</code>
+---------------------------</pre>
 
 ...and then disappears.
 

@@ -7,47 +7,47 @@ I've been playing with <a href="http://opensource.adobe.com/gil/">Adobe <abbr ti
 Here lies: What not to do, so you don't waste hours on it like I did.
 
 <strong>Test-case</strong>:
-<code>int main()
+<pre>int main()
 {
 	::gil::rgb8_image_t a;
 	::gil::jpeg_read_and_convert_image("a", a);
-}</code>
+}</pre>
 
 <strong>Compiled with</strong> Visual Studio 2005 SP1, Boost 1.33.1 and JPEG 6b (27-Mar-1998):
 
-<code>cl /EHsc jpegio.cpp /I c:\sdk\libs /I c:\boost\include\boost-1_33_1</code>
+<pre>cl /EHsc jpegio.cpp /I c:\sdk\libs /I c:\boost\include\boost-1_33_1</pre>
 
 <strong>First attempt</strong>, <code>&lt;windows.h&gt;</code> first:
 
-<code>#include &lt;windows.h&gt;
+<pre>#include &lt;windows.h&gt;
 
 #include &lt;gil/core/gil_all.hpp&gt;
 #include &lt;gil/extension/io/jpeg_dynamic_io.hpp&gt;
-</code>
+</pre>
 
 <em>Error</em>:
 
-<code>jpegio.cpp
+<pre>jpegio.cpp
 c:\sdk\libs\gil\core\channel.hpp(90) : warning C4003: not enough actual paramete rs for macro 'min'
 c:\sdk\libs\gil\core\channel.hpp(92) : warning C4003: not enough actual paramete rs for macro 'max'
 c:\sdk\libs\jmorecfg.h(161) : error C2371: 'INT32' : redefinition; different bas ic types
         C:\Program Files\Microsoft Visual Studio 8\VC\PlatformSDK\include\basetsd.h(62) : see declaration of 'INT32'
 c:\sdk\libs\jmorecfg.h(215) : warning C4005: 'FAR' : macro redefinition
-        C:\Program Files\Microsoft Visual Studio 8\VC\PlatformSDK\include\windef.h(145) : see previous definition of 'FAR'</code>
+        C:\Program Files\Microsoft Visual Studio 8\VC\PlatformSDK\include\windef.h(145) : see previous definition of 'FAR'</pre>
 
 <strong>Second attempt</strong>, other way around, <em>Error</em>:
-<code>jpegio.cpp
+<pre>jpegio.cpp
 C:\Program Files\Microsoft Visual Studio 8\VC\PlatformSDK\include\basetsd.h(62): error C2371: 'INT32' : redefinition; different basic types
-        c:\sdk\libs\jmorecfg.h(161) : see declaration of 'INT32'</code>
+        c:\sdk\libs\jmorecfg.h(161) : see declaration of 'INT32'</pre>
 
 <strong>Third attempt</strong>:
 
-<code>#include &lt;windows.h&gt;
+<pre>#include &lt;windows.h&gt;
 #include &lt;gil/core/gil_all.hpp&gt;
 
 #define XMD_H
 #include &lt;gil/extension/io/jpeg_dynamic_io.hpp&gt;
-#undef XMD_H</code>
+#undef XMD_H</pre>
 
 This should, in theory improve matters, as XMD_H being #defined stops <code>&lt;jmorecfg.h&gt;</code> trying to redeclare INT32.
 
@@ -55,7 +55,7 @@ Oh no.
 
 <em>Error</em>:
 
-<code>jpegio.cpp
+<pre>jpegio.cpp
 c:\sdk\libs\gil\core\channel.hpp(90) : warning C4003: not enough actual parameters for macro 'min'
 c:\sdk\libs\gil\core\channel.hpp(92) : warning C4003: not enough actual parameters for macro 'max'
 c:\sdk\libs\jmorecfg.h(215) : warning C4005: 'FAR' : macro redefinition
@@ -128,19 +128,19 @@ c:\sdk\libs\gil\core\color_convert.hpp(150) : error C2589: '(' : illegal token o
 c:\sdk\libs\gil\core\color_convert.hpp(150) : error C2143: syntax error : missing ')' before '::'
 c:\sdk\libs\gil\core\color_convert.hpp(150) : error C2780: 'T gil::channel_invert(T)' : expects 1 arguments - 0 provided
         c:\sdk\libs\gil\core\channel.hpp(235) : see declaration of 'gil::channel_invert'
-c:\sdk\libs\gil\core\color_convert.hpp(150) : error C2059: syntax error : ')'</code>
+c:\sdk\libs\gil\core\color_convert.hpp(150) : error C2059: syntax error : ')'</pre>
 
 ...
 
 <strong>Fourth attempt</strong>, the "right" way:
 
-<code>#include &lt;gil/core/gil_all.hpp&gt;
+<pre>#include &lt;gil/core/gil_all.hpp&gt;
 
 #define XMD_H
 #include &lt;gil/extension/io/jpeg_dynamic_io.hpp&gt;
 #undef XMD_H
 
-#include &lt;windows.h&gt;</code>
+#include &lt;windows.h&gt;</pre>
 
 This works as intended.
 

@@ -10,7 +10,7 @@ Installers for some applications say things like "This installer must be run as 
 
 Adobe, being the great company that they are, have decided to take a different approach. Running the Acrobat Reader (7.07) setup file as non-admin gives you the incredibly useful error message:
 
-<code>
+<pre>
 ---------------------------
 FEAD® 2.5 Optimizer©
 ---------------------------
@@ -22,7 +22,7 @@ File: C:/Program Files/Adobe/Acrobat 7.0/Setup Files/RdrBig707/ENU
 ---------------------------
 OK   
 ---------------------------
-</code>
+</pre>
 
 Good work, guys.
 

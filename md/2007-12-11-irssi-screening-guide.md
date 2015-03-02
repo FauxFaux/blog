@@ -8,23 +8,23 @@ It's best to do this right first time, although, I'm sure, most people won't rea
 
 For instance:
 
-<code>/network add freenode
+<pre>/network add freenode
 /network add efnet
-</code>
+</pre>
 
 </li><li><strong>Add servers for the networks.</strong>
 
-<code>/server add -network freenode irc.eu.freenode.net
+<pre>/server add -network freenode irc.eu.freenode.net
 /server add -network efnet irc.efnet.org
 /server add -network efnet efnet.port80.se
-</code>
+</pre>
 
 </li><li><strong>Add channels to the networks.</strong>
 
-<code>/channel add -auto #irssi freenode
+<pre>/channel add -auto #irssi freenode
 /channel add -auto #defocus freenode
 /channel add -auto #lulz efnet
-</code>
+</pre>
 
 "-auto" here means to auto-join the channel when connecting to the specified network.
 
@@ -42,8 +42,8 @@ Commit all the work done above to disk. If you messed up, just /reload.
 
 </li><li><strong>When you next load irssi...</strong>
 
-<code>/connect freenode
-/connect efnet</code>
+<pre>/connect freenode
+/connect efnet</pre>
 
 All of the above mentioned commands have loads of extra options, go read the <span style="font-family: monospace">/help</span>. :)
 </li></ol>

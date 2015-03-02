@@ -11,7 +11,7 @@ Possibly the easiest way to make it shorter would be to export some of the code 
 Etc.
 
 Anyway, the code:
-<code>
+<pre>
 socket=require("socket")
 tcp=socket.tcp()
 tcp:connect("irc.uwcs.co.uk", 6667)
@@ -30,6 +30,6 @@ if code == "376" then tcp:send("JOIN #luabot\r\n") end
 _,_, channel, args = line:find("^:[^ ]+ [A-Z0-9]+( [^ ]+ ):?!say (.*)$")
 if (args ~= nil) then tcp:send("PRIVMSG" .. channel .. ":" .. args .. "\r\n") end
 end
-</code>
+</pre>
 
 Have fun.

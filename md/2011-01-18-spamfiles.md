@@ -10,7 +10,7 @@ In a recent private project I was using Spring's JDBCTemplate with SQLite to wri
 
 The <a href="http://git.goeswhere.com/?p=sqlitelulz.git;a=summary">relevant code</a> and <a href="http://faux.uwcs.co.uk/sqlitelulz-v01.jar">sqlitelulz.jar</a> shows why this is a problem:
 
-<code>
+<pre>
 >java -jar sqlitelulz.jar 1000
 Autocommit: 70.867652636 seconds
 Manual commit: 0.107324493 seconds
@@ -18,7 +18,7 @@ Manual commit: 0.107324493 seconds
 $ java -jar sqlitelulz.jar 1000
 Autocommit: 1.814235004 seconds
 Manual commit: 0.075502495 seconds
-</code>
+</pre>
 
 Yes, that's 660 times slower on Windows (and only 25 times slower on non-ntfs).  This time is entirely sqlite creating and deleting it's journal file.
 

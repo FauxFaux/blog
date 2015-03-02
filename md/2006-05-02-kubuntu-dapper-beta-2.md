@@ -9,10 +9,10 @@ I picked <a href="http://kubuntu.org/">Kubuntu</a>, because it's supposed to be 
 My experience:
 <ol>	<li><a href="http://shots.osdir.com/slideshows/slideshow.php?release=616&slide=1">The splash screen (screenshot from old version)</a> doesn't support my USB keyboard, not so much of a problem, the default option was "Start Kubuntu", which was what I was after.</li>
 	<li>The system hung, displaying:
-<code>.
+<pre>.
 Decompressing Linux...Done.
 Booting the kernel.
-</code>
+</pre>
 When I say "hung", I mean that it made no further progress, and had no apparent disk activity for 5 minutes.</li>
 </ol>
 

@@ -29,7 +29,7 @@ This is fine; an error has occurred and it's full stacktrace will be placed in t
 None of these, however, will do anything useful.  The first logs just the toString() to the error log, info is too low-level to log exceptions at, and printStackTrace() doesn't necessarily go anywhere at all.
 
 For this block, catchlogger will issue:
-<code>IOException e unused at (Test.java:15) in public main(String[] args) in path.</code>
+<pre>IOException e unused at (Test.java:15) in public main(String[] args) in path.</pre>
 
 
 The JAR is huge as it pulls in the entire Eclipse compiler to parse the source.  BSD/MIT licensed.

@@ -12,14 +12,14 @@ The finalization thread is run at a lower priority, and, seemingly, on the confi
 
 For historical reasons, quite a few large classes in our codebase have:
 
-<code>void finalize() {}</code>
+<pre>void finalize() {}</pre>
 
 ..in, that is, finalizers that do nothing at all.  These empty finalizers still have to be run before the object can be collected, however, so they simply wern't, quickly leaking memory. The more that was leaked, the slower the JVM was running, so the less time the finalization thread had, a vicious cycle.
 
 I couldn't find many other people experiencing this on the internet, I can only assume that people simply don't use finalizers, which can only be a good thing.
 
 One guy had a rather more interesting solution:
-<code>
+<pre>
 public static void main(String[] args)
 {
 &nbsp;&nbsp;new Object()
@@ -32,6 +32,6 @@ public static void main(String[] args)
 &nbsp;&nbsp;};
 &nbsp;&nbsp;// ...
 }
-</code>
+</pre>
 
 The worst thing is, I can't really see any disadvantages to this...

@@ -14,7 +14,7 @@ For those of you who can't read my beautiful hand-coded assembler, when a comman
 
 Stage two, obviously, is to get some kind of useful reply...
 
-<code>
+<pre>
 // cl /Fecnf.dll /EHsc cnf.cpp /link /dll /dynamicbase /subsystem:console
 #define UNICODE
 #include &lt;iostream&gt;
@@ -28,6 +28,6 @@ void __stdcall cnf(const wchar_t* command)
 	wcout &lt;&lt; L"I'm sorry, it looks like you tried to call ``" &lt;&lt; command &lt;&lt; "'', but the command doesn't exist!" &lt;&lt; endl &lt;&lt; endl;
 	wcout &lt;&lt; L"Did you want to try /your mother/ instead?" &lt;&lt; endl;
 }
-</code>
+</pre>
 
 I started writing a loader that'd apply the patch on-the-fly/to all existing instances of cmd, but I kind of ran out of care (it should be safe, it's about a sixty-byte patch). If anyone can think of any actual applications of this...

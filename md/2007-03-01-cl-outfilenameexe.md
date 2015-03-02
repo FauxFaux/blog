@@ -5,10 +5,10 @@ date: 2007-03-01 21:00:23+00:00
 I was minorly confused today as to why all of my lovely compiled programs were disappearing and, instead, I was left with some empty files called <strong>ut</strong>.
 
 For example, a test C++ file:
-<code>echo int main(){} > empty.cpp</code>
+<pre>echo int main(){} > empty.cpp</pre>
 
 Compile it:
-<code>&gt;cl empty.cpp
+<pre>&gt;cl empty.cpp
 Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 14.00.50727.762 for 80x86
 
 Copyright (C) Microsoft Corporation.  All rights reserved.
@@ -19,13 +19,13 @@ Copyright (C) Microsoft Corporation.  All rights reserved.
 
 /out:empty.exe
 empty.obj
-</code>
+</pre>
 
 As it clearly says, this /out:puts to "empty.exe". Okay, I don't want it to output to "empty.exe", I want it to be called "full.exe". So, I add <strong>/out:full.exe</strong> to my build script (along with all the normal junk like /MD and /nologo), and the output is now:
 
-<code>C:\Desktop>cl /nologo empty.cpp /out:full.exe
+<pre>C:\Desktop>cl /nologo empty.cpp /out:full.exe
 cl : Command line warning D9035 : option 'o' has been deprecated and will be removed in a future release
-empty.cpp</code>
+empty.cpp</pre>
 
 Curious, but only a warning, let's ignore it.
 

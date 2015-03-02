@@ -10,7 +10,7 @@ Anyway, I wanted to run the Date and Time control panel applet as a limited user
 
 The file we're hoping to attack is %windir%\system32\timedate.cpl, copy it somewhere sensible. As it happens .cpl files are just dlls, unfortunately <a href="http://www.ollydbg.de/">OllyDbg</a>'s LoadDLL wrapper does't seem to understand them. If you check the association, they're set to open with rundll32, ie.
 
-<code>rundll32.exe shell32.dll,Control_RunDLL "c:\desktop\timedate.cpl"</code>
+<pre>rundll32.exe shell32.dll,Control_RunDLL "c:\desktop\timedate.cpl"</pre>
 
 The DDE stuff doesn't seem to matter, luckily.
 
@@ -25,27 +25,27 @@ Jump to it from the "Executable modules" window, right click -> search for -> al
 At this point, OllyDbg stops at the LoadLibraryW call. How infuriating. Hit run (F9) again.
 
 Next stop is at one of the ZwOpenProcessToken, aha. The code we're looking at:
-<code>
+<pre>
 58735FCF:
 call DWORD PTR DS:[< &ntdll.NtOpenProcessToken>]
 test eax,eax
 jge short timedate.58735FE0
 xor eax,eax
 jmp timedate.58736066
-</code>
+</pre>
 
 Step over (F8) it, and you'll notice that it's returned 0 into EAX. The (standard version of) <a href="http://msdn.microsoft.com/library/en-us/secauthz/security/openprocesstoken.asp?frame=true">OpenProcessToken's documentation</a> suggests that it returns a boolean, so our zero would be 'false', as in, function failed.
 
 Hit F8 again, and OllyDbg helpfully tells us that the jump is taken. This (obviously, if you test it by modifying the register) isn't what we want, so edit the code. The <code>'test'</code> and <code>'jge'</code> instructions aren't required, so replace them with <code>mov eax,1</code>. OllyDbg will fill in the NOPs for you.
 
 Code fragment now looks something like:
-<code>
+<pre>
 58735FCF:
 call DWORD PTR DS:[< &ntdll.NtOpenProcessToken>]
 mov eax,1
 nop
 jmp timedate.58736066
-</code>
+</pre>
 
 Save the changes to the file, and restart the app. It works! The rest of the calls are either ignored, or have sensible error handling, great.
 

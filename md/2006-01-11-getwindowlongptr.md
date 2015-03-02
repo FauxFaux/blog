@@ -7,4 +7,4 @@ As mentioned in
 
 The warning (or error, if you're trying to build with treat warnings as errors) you get is:
 
-<code>warning C4244: 'argument' : conversion from 'LONG_PTR' to 'LONG', possible loss of data</code>
+<pre>warning C4244: 'argument' : conversion from 'LONG_PTR' to 'LONG', possible loss of data</pre>
