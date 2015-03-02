@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from collections import namedtuple
+from collections import namedtuple, defaultdict
 from glob import glob
 import os
 import re
@@ -46,7 +46,7 @@ dates=sorted(set(((item.date.strftime('/%Y/%m'), item.date.strftime('%Y-%m'))
     for item in files.values())), reverse=True)
 
 def url_of(item):
-    return item.date.strftime("%Y/%m/") + item.slug + "/"
+    return item.date.strftime("/%Y/%m/") + item.slug + "/"
 
 def write_page(path, template, title, **args):
     if not title:
@@ -83,9 +83,21 @@ for slug, item in files.items():
         render_post=render_post,
         item=item)
 
-write_page('index.html', 'list.html', None,
-            items=sorted(files.values(), reverse=True, key=lambda item: item.date),
+def write_list(path, items, title):
+    return write_page(path + 'index.html', 'list.html', title,
+            items=sorted(items, reverse=True, key=lambda item: item.date),
             render_post=render_post)
+write_list('', files.values(), None)
+
+def by_date(format, items):
+    ret = defaultdict(list)
+    for item in files.values():
+        ret[item.date.strftime(format)].append(item)
+    return ret
+
+for by_dates in [by_date('%Y/%m/', files.values()), by_date('%Y/', files.values())]:
+    for month, items in by_dates.items():
+        write_list(month, items, month)
 
 for static in ['main.css']:
     with open_out('static/' + static) as f:
