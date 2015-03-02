@@ -1,5 +1,17 @@
 div.date {
     float: right;
     padding: 0.5em;
+    border: 1px #eee solid;
+    border-radius: 5px;
 }
 
+div.page-header {
+    background-color: #eee;
+    margin-top: 0;
+    padding-top: 15px;
+}
+
+div.page-header h1 {
+    padding-left: 15px;
+    margin-top: 0;
+}
