@@ -2,4 +2,8 @@
     <div class="date">{{ date }}</div>
     <h2><a href="{{ url }}">{{ title }}</a></h2>
     {{ content }}
+
+    {% if more %}
+        <p><a href="{{ url }}#more">Continue reading...</a></p>
+    {% endif %}
 </div>

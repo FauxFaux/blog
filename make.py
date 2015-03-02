@@ -3,7 +3,7 @@
 from collections import namedtuple
 from glob import glob
 import os
-
+import re
 
 #python3-datetime
 from datetime import datetime
@@ -60,11 +60,21 @@ def write_page(path, template, title, **args):
             dates=dates,
             title=title))
 
-def render_post(item):
+def render_post(item, full=False):
+    content = item.content
+    more = False
+    if '<!--more-->' in item.content:
+        more = not full
+        if more:
+            content = re.sub('<!--more-->.*', '', content, flags=re.DOTALL)
+        else:
+            content = re.sub('<!--more-->', '<a name="more"></a>', content)
+
     return templates.get_template('post.html').render(
-            content=markdown(item.content),
+            content=markdown(content),
             url=url_of(item),
             date=item.date.strftime('%Y-%m-%d'),
+            more=more,
             title=item.title)
 
 for slug, item in files.items():
