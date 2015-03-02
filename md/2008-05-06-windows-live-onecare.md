@@ -7,6 +7,7 @@ As I had no particular use of my CPU time over the weekend (I was busy force-fee
 It happily scanned away, deleting three copies of the <a href="http://en.wikipedia.org/wiki/EICAR_test_file">deadly EICAR virus</a> (phew), this was (mostly) fine.
 
 Following this, and OneCare assuring me that my system was free of viruses, spyware and other malware, awarded me the security status Fair:
+
 <img src='http://faux.uwcs.co.uk/onecarefair.png' alt='OneCare - Fair, Fix, Backup' class='alignnone' />
 
 The "problem" found was, apparently, that I have chosen to disable elevation upon "setup detection", a feature built into Vista (disableable via. Local Security Policy -> UAC: Detect Application Installs..) by Microsoft in a cunning plan to ensure that lazy software developers didn't need to bother learning how manifests work, and instead could just rename their application to "setup.exe" and pray. There is no way to ignore this "problem".

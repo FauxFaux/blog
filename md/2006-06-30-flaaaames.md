@@ -18,9 +18,11 @@ Where did you get this installation media from, just out of interest? Did you do
 I think we might need pictures here.
 
 <ol>	<li>First of all we're going to visit the website of a popular search engine, known as <a href="http://www.google.co.uk/">Google</a>. You may have heard of it. We're looking for "Visual Studio Express Edition", so go ahead and enter it into the box, noquotes.
+
 <img src="http://faux.uwcs.co.uk/perm/search1.png" alt="Google's home page with the I'm Feeling Lucky button highlighted" />
 Click "I'm feeling lucky", as indicated in the above image.</li>
 	<li>This'll get you to the <a href="http://msdn.microsoft.com/vstudio/express/">Visual Studio Express Edition home page</a>. From here, we have to decide which version of <abbr title="Visual Studio Express Edition">VSEE</abbr> we're after <em>For Windows Development</em>. At random, I've picked the C++ edition, so click <a href="http://msdn.microsoft.com/vstudio/express/visualc/">Visual C++ 2005 Express Edition</a>. Another screen capture is provided if you are having problems locating the link:
+
 <img src="http://faux.uwcs.co.uk/perm/search2.png" alt="Visual Studio 2005 editions" /></li>
 	<li>We're aiming to download it, so, here, click on the large <a href="http://msdn.microsoft.com/vstudio/express/visualc/download/">DOWNLOAD NOW</a> link. <img src="http://faux.uwcs.co.uk/perm/search3.png" alt="Large Download Now image." /> No arrows required here, I hope.</li>
 
