@@ -65,7 +65,7 @@ the thing managing the DHCP is the same as the thing managing the DNS, so it sho
 Let's check `AAAA` again:
 
 
-    % dig -t A example @10.0.3.1
+    % dig -t AAAA example @10.0.3.1
 
     ;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 5445
     ;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
