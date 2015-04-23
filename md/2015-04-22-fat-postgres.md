@@ -99,7 +99,7 @@ This takes around 17m total, and consumes a minimum of 20gb of RAM.  But, at lea
 For comparison:
 
  * [pandas](http://pandas.pydata.org/) can ingest and compute basic stats on the file
-    in ~1m / 6gb RAM (although it's cheating and only suporting numerics).
+    in ~1m / 6gb RAM (although it's cheating and only supporting numerics).
  * shell (`cut -f $i | sort -u | wc -l`) would take about 1h20m.
  * Naive Java implementation took me 4m to write from scratch, and takes about 35s to compute the answer.
 
