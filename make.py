@@ -144,8 +144,9 @@ for item in in_feed:
     fe.id(full_url)
     fe.link(href=full_url, rel='alternate')
     fe.title(item.title)
-    fe.content(item.content[0:300] + '...')
+    fe.content(markdown(item.content))
     fe.updated(tz.localize(datetime.fromtimestamp(item.mtime)))
+    fe.published(tz.localize(datetime.fromtimestamp(item.mtime)))
 
 os.makedirs('out/feed/atom')
 os.makedirs('out/feed/rss')
