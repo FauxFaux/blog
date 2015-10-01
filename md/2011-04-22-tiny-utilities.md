@@ -4,7 +4,9 @@ date: 2011-04-22 21:50:10+00:00
 
 I have a set of tiny utilities that I use on a daily basis but have never bothered to release.
 
-All are in the <a href="//b.goeswhere.com/tinies-v001.7z">tinies v001 archive</a>, in both x64 and legacy format.  <a href="//b.goeswhere.com/tinies-syms-v001.7z">Symbols</a>, <a href="//git.goeswhere.com/?p=tinies.git;a=tag;h=refs/tags/v001">source and signatures</a> are available.  No installer is available; just drop them into your All Programs -> Startup folder.
+<strong>Updated:</strong> The binaries are on <a href="https://github.com/FauxFaux/tinies/releases">github releases</a>, and also a local mirror: <a href="//b.goeswhere.com/tinies-v002.zip">tinies v002 archive</a>.
+
+<strike>All are in the <a href="//b.goeswhere.com/tinies-v001.7z">tinies v001 archive</a>, in both x64 and legacy format.  <a href="//b.goeswhere.com/tinies-syms-v001.7z">Symbols</a>, <a href="//git.goeswhere.com/?p=tinies.git;a=tag;h=refs/tags/v001">source and signatures</a> are available.</strike>  No installer is available; just drop them into your All Programs -> Startup folder.
 
 <hr/>
 
@@ -14,7 +16,7 @@ This makes the most sense with Aero's Snap turned on.  If you have two windows "
 
 <hr/>
 
-<strong>topkey.exe</strong> adds <code>win+w</code> to toggle a windows' always-on-top flag, and <code>win+return</code> to create a new command prompt "in the current directory".  (This works for Explorer windows, and things that have the directory at the start of the title, i.e. Notepad++.)
+<strong>topkey.exe</strong> adds <code>win+w</code> to toggle a windows' always-on-top flag, and <strike><code>win+return</code></strike><code>ctrl+win+return</code> (as <code>win+return</code> is stolen by accessibility from Win7) to create a new command prompt "in the current directory".  (This works for Explorer windows, and things that have the directory at the start of the title, i.e. Notepad++.)
 
 <hr/>
 
