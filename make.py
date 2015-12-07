@@ -60,9 +60,6 @@ for name in glob("md/*.md"):
                 parser.parse(headers['date']), f.read(),
                 os.path.getmtime(name))
 
-dates=sorted(set(((item.date.strftime('/%Y/%m'), item.date.strftime('%Y-%m'))
-    for item in files.values())), reverse=True)
-
 def url_of(item):
     return item.date.strftime("/%Y/%m/") + item.slug + "/"
 
@@ -75,7 +72,6 @@ def write_page(path, template, title, **args):
     with open_out(path) as f:
         f.write(templates.get_template('index.html').render(
             content=templates.get_template(template).render(args),
-            dates=dates,
             title=title))
 
 def render_post(item, full=False):
