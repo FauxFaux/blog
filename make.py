@@ -124,17 +124,26 @@ def write_list(base_path, items, title):
                 next=next, prev=prev,
                 render_post=render_post)
 
-write_list('', files.values(), None)
+
+write_list('all/', files.values(), None)
 
 def by_date(format, items):
     ret = defaultdict(list)
-    for item in files.values():
+    for item in sorted(files.values(), reverse=True, key=lambda item: item.date):
         ret[item.date.strftime(format)].append(item)
     return ret
 
 for by_dates in [by_date('%Y/%m/', files.values()), by_date('%Y/', files.values())]:
     for month, items in by_dates.items():
         write_list(month, items, month)
+
+def write_index(items):
+    by_year = by_date('%Y', sorted(items, reverse=True, key=lambda item: item.date))
+
+    write_page('index.html', 'front.html', None,
+            by_year=sorted(by_year.items(), reverse=True, key=lambda pair: pair[0]))
+
+write_index(files.values())
 
 in_feed=sorted(files.values(), reverse=True, key=lambda item: item.date)[0:10]
 
