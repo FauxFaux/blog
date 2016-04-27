@@ -107,5 +107,5 @@ In summary: Don't use Postgres for this, and Java wins, as usual.
 
 <!--more-->
 
-All timings done on an i7-4770k (4 physical, 8 virtual), 24gb RAM, ssd, btrfs + lzo compression, amd64 Linux.
+All timings done on an i7-3770k (4 physical, 8 virtual), 24gb RAM, ssd, btrfs + lzo compression, amd64 Linux.
 PostgreSQL 9.3 with some basic tuning (`shared_buffers`, `effective_cache_size`, `synchronous_commit`, etc.).
