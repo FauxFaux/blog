@@ -1,11 +1,13 @@
 {% for year_posts in by_year %}
-    <h3>{{ year_posts[0] }}</h3>
-    {% for post in year_posts[1] %}
-        <li>{{ post.date.strftime('%Y-%m-%d') }}:
+    <h3>{{ year_posts[0]|e }}</h3>
+    <ul class="frontlist">
+    {% for post in year_posts[1] -%}
+        <li>{{ post.date.strftime('%Y-%m-%d')|e }}:
             <a href="{{ post.date.strftime('%Y/%m/') }}{{ post.slug }}/">
-                {{ post.title }}
+                {{ post.title|e }}
             </a>
         </li>
-    {% endfor %}
+    {%- endfor %}
+    </ul>
 {% endfor %}
 

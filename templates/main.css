@@ -36,3 +36,12 @@ div.post {
 div.post img {
     max-width: 100%
 }
+
+ul.frontlist {
+    padding-left: 1em;
+}
+
+ul.frontlist li {
+    list-style: none;
+}
+

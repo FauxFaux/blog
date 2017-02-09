@@ -1,6 +1,6 @@
 <div class="post">
-    <div class="date">{{ date }}</div>
-    <h2><a href="{{ url }}">{{ title }}</a></h2>
+    <div class="date">{{ date|e }}</div>
+    <h2><a href="{{ url }}">{{ title|e }}</a></h2>
     {{ content }}
 
     {% if more %}

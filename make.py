@@ -20,6 +20,9 @@ import jinja2
 from feedgen.feed import FeedGenerator
 import pytz
 
+# python3-slimmer
+import slimmer
+
 templates = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
 feed_root='https://blog.goeswhere.com'
@@ -70,9 +73,11 @@ def write_page(path, template, title, **args):
         title='Faux\' blog: ' + title
 
     with open_out(path) as f:
-        f.write(templates.get_template('index.html').render(
-            content=templates.get_template(template).render(args),
-            title=title))
+        f.write(
+                slimmer.html_slimmer(
+                templates.get_template('index.html').render(
+                    content=templates.get_template(template).render(args),
+                    title=title)))
 
 def render_post(item, full=False):
     content = item.content
@@ -161,6 +166,6 @@ fg.rss_file('out/feed/index.xml')
 
 for static in ['main.css']:
     with open_out('static/' + static) as f:
-        f.write(templates.get_template(static).render())
+        f.write(slimmer.css_slimmer(templates.get_template(static).render()))
 
 shutil.copytree('images', 'out/images')
