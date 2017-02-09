@@ -4,7 +4,7 @@ date: 2011-06-05 22:58:15+00:00
 
 It's a sad fact of life that many developers spend a good deal of time staring at stack traces.
 
-My personal favorite situation is when you get to:
+My personal favourite situation is when you get to:
 <pre>Exception in thread "main" java.lang.NullPointerException
 &nbsp;&nbsp;&nbsp;&nbsp;at com.goeswhere.dmnp.linenos.B.foo(<a href="//git.goeswhere.com/?p=dmnp.git;a=blob;f=linenos/src/test/java/com/goeswhere/dmnp/linenos/B.java;h=889c1de3871669b72c3f86abd981419e00f625f3;hb=HEAD">B.java</a>:13)</pre>
 
