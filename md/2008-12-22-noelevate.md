@@ -10,7 +10,7 @@ It seems that, like <a href="http://blog.prelode.com/?p=69"><em>some other thing
 
 Luckily, it's an even smaller patch than last time. I won't show it, it's simply erasure of a <code>jmp</code>. It's a terrible solution to the problem, and the binary only contains fixes for <code>kernel32.dll</code> as seen on x64 SP1 and x32 SP1 as of now, it could break at any point. I implore nobody to use this utility seriously.
 
-<a href="//b.goeswhere.com/noelev.exe">noelev</a> (<a href="//b.goeswhere.com/noelev.exe.asc">asc</a>) (<a href="//b.goeswhere.com/noelev.cpp">cpp</a>) (<a href="//b.goeswhere.com/noelev.pdb.7z">pdb</a>) works much like the reverse of the unix "sudo" command, running a command via. it makes it run <strong>without</strong> elevation.
+<a href="/files/noelev.exe">noelev</a> (<a href="/files/noelev.exe.asc">asc</a>) (<a href="/files/noelev.cpp">cpp</a>) (<a href="/files/noelev.pdb.7z">pdb</a>) works much like the reverse of the unix "sudo" command, running a command via. it makes it run <strong>without</strong> elevation.
 
 It's not infectious, so it won't work for all applications (like some setup applications that unpack other installers), and, of course, some applications actually don't work without elevation.
 

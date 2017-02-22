@@ -8,7 +8,7 @@ That is, you give it more threads, and the throughput increases; the overall tim
 
 The following graph shows, in blue, the Sun's java.util.zip.ZipFile time to complete a set of unzips on an increasing number of threads:
 
-<img src="//b.goeswhere.com/zf-perf.png"/>
+<img src="/files/zf-perf.png"/>
 
 Wait, what the cocking shit.
 
@@ -19,7 +19,7 @@ The red line shows a pure Java implementation of ZipFile that scales expectedly 
 
 As expected, the performance of Sun's implementation massively increases (for large number of threads) if you manually synchronise on a global monitor around the ZipFile uses.  Red line unchanged:
 
-<img src="//b.goeswhere.com/zf-sync-perf.png"/>
+<img src="/files/zf-sync-perf.png"/>
 
 <hr />
 
@@ -31,4 +31,4 @@ File entirely cached by the file-system.  JIT warmed.  Heap significantly larger
 
 Vista x64, Sun Java 1.6u20 x64 (i.e. server vm).
 
-java -cp <a href="http://jazzlib.sf.net/">jazzlib-binary-0.07.zip</a>:. <a href="//b.goeswhere.com/ZipFileTester.java">ZipFileTester</a> somefile.zip
+java -cp <a href="http://jazzlib.sf.net/">jazzlib-binary-0.07.zip</a>:. <a href="/files/ZipFileTester.java">ZipFileTester</a> somefile.zip

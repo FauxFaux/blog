@@ -1,0 +1,186 @@
+From b00b1e56a0053b83a754f8092c67454e3be53125 Mon Sep 17 00:00:00 2001
+From: Chris West (Faux) <git@goeswhere.com>
+Date: Tue, 9 Nov 2010 20:43:45 +0000
+Subject: [PATCH] --set-commit-id option for commit
+
+Signed-off-by: Chris West (Faux) <git@goeswhere.com>
+---
+ builtin/commit.c         |    7 +++--
+ commit.c                 |   67 ++++++++++++++++++++++++++++++++++++++++++++-
+ commit.h                 |    5 +++
+ contrib/sequentialise.sh |   17 +++++++++++
+ 4 files changed, 91 insertions(+), 5 deletions(-)
+ create mode 100755 contrib/sequentialise.sh
+
+diff --git a/builtin/commit.c b/builtin/commit.c
+index c045c9e..0c7d81a 100644
+--- a/builtin/commit.c
++++ b/builtin/commit.c
+@@ -68,7 +68,7 @@ static enum {
+ 
+ static const char *logfile, *force_author;
+ static const char *template_file;
+-static char *edit_message, *use_message;
++static char *edit_message, *use_message, *set_commit_id;
+ static char *fixup_message, *squash_message;
+ static char *author_name, *author_email, *author_date;
+ static int all, edit_flag, also, interactive, only, amend, signoff;
+@@ -127,6 +127,7 @@ static struct option builtin_commit_options[] = {
+ 	OPT_STRING('C', "reuse-message", &use_message, "COMMIT", "reuse message from specified commit"),
+ 	OPT_STRING(0, "fixup", &fixup_message, "COMMIT", "use autosquash formatted message to fixup specified commit"),
+ 	OPT_STRING(0, "squash", &squash_message, "COMMIT", "use autosquash formatted message to squash specified commit"),
++	OPT_STRING(0, "set-commit-id", &set_commit_id, "COMMIT", "specify the commit identifier"),
+ 	OPT_BOOLEAN(0, "reset-author", &renew_authorship, "the commit is authored by me now (used with -C-c/--amend)"),
+ 	OPT_BOOLEAN('s', "signoff", &signoff, "add Signed-off-by:"),
+ 	OPT_FILENAME('t', "template", &template_file, "use specified template file"),
+@@ -1384,9 +1385,9 @@ int cmd_commit(int argc, const char **argv, const char *prefix)
+ 		exit(1);
+ 	}
+ 
+-	if (commit_tree(sb.buf, active_cache_tree->sha1, parents, commit_sha1,
++	if (commit_tree_harder(sb.buf, active_cache_tree->sha1, parents, commit_sha1,
+ 			fmt_ident(author_name, author_email, author_date,
+-				IDENT_ERROR_ON_NO_NAME))) {
++				IDENT_ERROR_ON_NO_NAME), set_commit_id)) {
+ 		rollback_index_files();
+ 		die("failed to write commit object");
+ 	}
+diff --git a/commit.c b/commit.c
+index b21335e..220169b 100644
+--- a/commit.c
++++ b/commit.c
+@@ -6,6 +6,7 @@
+ #include "diff.h"
+ #include "revision.h"
+ #include "notes.h"
++#include "progress.h"
+ 
+ int save_commit_buffer = 1;
+ 
+@@ -824,14 +825,41 @@ struct commit_list *reduce_heads(struct commit_list *heads)
+ 	return result;
+ }
+ 
++const uint32_t units = 10000;
++int calculate(char *b, uint32_t start, uint32_t end, git_SHA_CTX base,
++		struct progress *prog, const char *id_prefix) {
++	unsigned char sha[20];
++	int32_t i;
++	for (i = 0; i < UINT32_MAX; ++i) {
++		git_SHA_CTX c = base;
++		const char *chars = " \t\r\n";
++		int j;
++
++		for (j = 0; j < 32; j += 2)
++			b[j/2] = chars[(i >> j) & 3];
++
++		git_SHA1_Update(&c, b, 16);
++
++		git_SHA1_Final(sha, &c);
++
++		if (0 == strncmp(id_prefix, sha1_to_hex(sha), strlen(id_prefix)))
++			return 1;
++
++		display_progress(prog, i/units);
++	}
++	return 0;
++}
++
++
++
+ static const char commit_utf8_warn[] =
+ "Warning: commit message does not conform to UTF-8.\n"
+ "You may want to amend it after fixing the message, or set the config\n"
+ "variable i18n.commitencoding to the encoding your project uses.\n";
+ 
+-int commit_tree(const char *msg, unsigned char *tree,
++int commit_tree_harder(const char *msg, unsigned char *tree,
+ 		struct commit_list *parents, unsigned char *ret,
+-		const char *author)
++		const char *author, const char *id_prefix)
+ {
+ 	int result;
+ 	int encoding_is_utf8;
+@@ -874,7 +902,42 @@ int commit_tree(const char *msg, unsigned char *tree,
+ 	if (encoding_is_utf8 && !is_utf8(buffer.buf))
+ 		fprintf(stderr, commit_utf8_warn);
+ 
++	if (id_prefix)
++	{
++		char hdr[32];
++		int hdrlen;
++		int success;
++		git_SHA_CTX super;
++		char b[17];
++		struct progress *prog = start_progress("Searching",
++				(1 << (4u*strlen(id_prefix)))/units);
++		b[16] = 0;
++
++		hdrlen = sprintf(hdr, "%s %lu", commit_type, buffer.len + 16)+1;
++
++		git_SHA1_Init(&super);
++		git_SHA1_Update(&super, hdr, hdrlen);
++		git_SHA1_Update(&super, buffer.buf, buffer.len);
++
++		success = calculate(b, 0, UINT32_MAX, super, prog, id_prefix);
++		stop_progress(&prog);
++
++		if (success)
++			strbuf_addstr(&buffer, b);
++		else
++		{
++			fprintf(stderr, "Couldn't generate a hash that matches that template.\n");
++			return 17;
++		}
++	}
+ 	result = write_sha1_file(buffer.buf, buffer.len, commit_type, ret);
+ 	strbuf_release(&buffer);
+ 	return result;
+ }
++
++int commit_tree(const char *msg, unsigned char *tree,
++		struct commit_list *parents, unsigned char *ret,
++		const char *author) {
++	return commit_tree_harder(msg, tree, parents, ret, author, NULL);
++}
++
+diff --git a/commit.h b/commit.h
+index 3bfb31b..0f52f7a 100644
+--- a/commit.h
++++ b/commit.h
+@@ -175,4 +175,9 @@ extern int commit_tree(const char *msg, unsigned char *tree,
+ 		struct commit_list *parents, unsigned char *ret,
+ 		const char *author);
+ 
++extern int commit_tree_harder(const char *msg, unsigned char *tree,
++		struct commit_list *parents, unsigned char *ret,
++		const char *author, const char *id_suffix);
++
++
+ #endif /* COMMIT_H */
+diff --git a/contrib/sequentialise.sh b/contrib/sequentialise.sh
+new file mode 100755
+index 0000000..ae66135
+--- /dev/null
++++ b/contrib/sequentialise.sh
+@@ -0,0 +1,17 @@
++#!/bin/bash
++set -e
++
++DIGITS=${2-5}
++
++TEMP=$(mktemp)
++trap "rm $TEMP" EXIT
++
++EDITOR='sed -i s/pick/edit/' git rebase -i $1 2>$TEMP
++head -n1 $TEMP
++
++while \
++	git commit --amend --set-commit-id $(perl -e 'printf("%0'$DIGITS'x0",0x'$(git rev-list HEAD~ | head -c$DIGITS)'+1)') -CHEAD && \
++	git rebase --continue 2>$TEMP
++	do head -n1 $TEMP
++done
++
+-- 
+1.7.1
+

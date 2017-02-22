@@ -1,0 +1,32 @@
+From 35564181e697995d66776e4bb39366d805df25ca Mon Sep 17 00:00:00 2001
+From: Chris West (Faux) <git@goeswhere.com>
+Date: Tue, 2 Aug 2011 19:23:24 +0100
+Subject: [PATCH] Leak slower
+
+---
+ script/countdown.js |    7 +++++--
+ 1 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/script/countdown.js b/script/countdown.js
+index c5aedfb..b796768 100644
+--- a/script/countdown.js
++++ b/script/countdown.js
+@@ -18,10 +18,13 @@ function DisplayCalc(div) {
+ 
+     var DisplayStr;
+     var DisplayFormat = "%%D%% days";
+-    DisplayStr = DisplayFormat.replace(/%%D%%/g, Calc(numsecs, 86400, 100000));
++    var secondsInDay = 86400;
++    var days = Calc(numsecs, secondsInDay, 100000);
++    var untilUpdate = Math.min(30*60*1000, Math.max(990, 1000 * (numsecs - (days * secondsInDay))));
++    DisplayStr = DisplayFormat.replace(/%%D%%/g, days);
+     if (numsecs >= 0) {
+         document.getElementById(div).innerHTML = DisplayStr;
+-        setTimeout("DisplayCalc('" + div + "'," + (numsecs - 1) + ");", 990);
++        setTimeout("DisplayCalc('" + div + "'," + (numsecs - 1) + ");", untilUpdate);
+     }
+     else {
+         document.getElementById(div).innerHTML = "";
+-- 
+1.7.4.msysgit.0
+

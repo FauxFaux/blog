@@ -10,7 +10,7 @@ Browser Version (Partially Combined) makes a better stab at useful information, 
 
 So... I wrote my own.  Click for a full view:
 
-<a href="https://b.goeswhere.com/browserstats-2013-05.png"><img style="max-width: 100%" src="https://b.goeswhere.com/browserstats-2013-05.png" title="2009-01 - 2013-05's browser stats"/></a>
+<a href="/files/browserstats-2013-05.png"><img style="max-width: 100%" src="/files/browserstats-2013-05.png" title="2009-01 - 2013-05's browser stats"/></a>
 
 This picks out some reasonably interesting features:
 <ul>

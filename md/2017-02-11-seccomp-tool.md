@@ -101,7 +101,7 @@ To assist people playing around with this (on amd64 only!), I wrote a tool named
 and a front-end named
 [seccomp-filter](https://github.com/FauxFaux/tinies/blob/master/seccomp-filter.py).
 
-There's a [binary of `seccomp-tool`](https://b.goeswhere.com/seccomp-tool-v0.0.1)
+There's a [binary of `seccomp-tool`](/files/seccomp-tool-v0.0.1)
 available for anyone who doesn't feel like compiling it. It depends on only
 `libseccomp2`. `sudo apt install libseccomp2`. It needs to be in your path as `seccomp-tool`.
 

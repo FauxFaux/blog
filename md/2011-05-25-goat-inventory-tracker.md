@@ -15,7 +15,7 @@ You're an enterprising <abbr title="software engineer">goat farmer</abbr>.  You 
 
 <hr />
 
-<a href="http://www.flickr.com/photos/abbsworth/5751516011/sizes/l/in/photostream/"><img class="inline" src="https://b.goeswhere.com/goat-abbsworth-5751516011.jpg" alt="one of the only two cute goat photos on the entire internet, (c) 2011 abbsworth, used without permission"/></a>
+<a href="http://www.flickr.com/photos/abbsworth/5751516011/sizes/l/in/photostream/"><img class="inline" src="/files/goat-abbsworth-5751516011.jpg" alt="one of the only two cute goat photos on the entire internet, (c) 2011 abbsworth, used without permission"/></a>
 
 <abbr title="A bug report">An order</abbr> comes in for some <abbr title="code fixes">goats</abbr>.  You spring into <abbr title="the kitchen to get some coke">action</abbr>!
 
@@ -35,7 +35,7 @@ This is important, as you're required to maintain <abbr title="passing tests">va
 
 <hr />
 
-<a href="http://www.flickr.com/photos/loredana_preston/5754380402/in/photostream/"><img class="inline" style="float:right" src="https://b.goeswhere.com/goat-loredana_preston-5754380402.jpg" alt="the other only cute goat photo on the entire internet, (c) 2011 Loredana Preston, used without permission"/></a>
+<a href="http://www.flickr.com/photos/loredana_preston/5754380402/in/photostream/"><img class="inline" style="float:right" src="/files/goat-loredana_preston-5754380402.jpg" alt="the other only cute goat photo on the entire internet, (c) 2011 Loredana Preston, used without permission"/></a>
 
 Now that you're happy, you can decree <abbr class="gitcmd" title="git commit">Goat Inventory Tracker, Seal This Box</abbr>!
 
@@ -53,7 +53,7 @@ You are then able to reorder, <abbr title="reword">change the shipping note of</
 
 <hr />
 
-<img class="inline" style="width:150px;height:205px" src="https://b.goeswhere.com/postman_pat.jpg" alt="Postman Pat, Postman Pat, Postman Pat and his black and white cat.  EARLY IN THE MORNING, JUST AS DAY IS DAWNING..."/>
+<img class="inline" style="width:150px;height:205px" src="/files/postman_pat.jpg" alt="Postman Pat, Postman Pat, Postman Pat and his black and white cat.  EARLY IN THE MORNING, JUST AS DAY IS DAWNING..."/>
 
 Once you're happy with your outstanding <abbr title="commits">orders</abbr>, you can decree <abbr class="gitcmd" title="git push">Goat Inventory Tracker, Summon The Postman</abbr>!
 

@@ -8,11 +8,11 @@ All software development is the creation of patches; small changes to the state 
 
 <div style="height: 2em;"></div><hr style="clear: left"/><div style="height: 2em;"></div>
 
-<img src="//b.goeswhere.com/papi-commit.png" style="float: left; padding: 2em"/><p>Like in other version control systems, <code>papi commit</code> adds a patch (yellow) to the existing stack of patches (green).  As with any modern version control system, you can have multiple outstanding patches on a pile.</p>
+<img src="/files/papi-commit.png" style="float: left; padding: 2em"/><p>Like in other version control systems, <code>papi commit</code> adds a patch (yellow) to the existing stack of patches (green).  As with any modern version control system, you can have multiple outstanding patches on a pile.</p>
 
 <div style="height: 2em;"></div><hr style="clear: left"/><div style="height: 2em;"></div>
 
-<img src="//b.goeswhere.com/papi-new-pile.png" style="float: left; padding: 2em"/>
+<img src="/files/papi-new-pile.png" style="float: left; padding: 2em"/>
 
 Sometimes you want to be working on multiple things at the same time, say yellow and blue things.  For this, there's <code>papi new-pile</code>.
 
@@ -20,7 +20,7 @@ It lets you name your new pile, let's call it blue.  This means you can pile pat
 
 <div style="height: 2em;"></div><hr style="clear: left"/><div style="height: 2em;"></div>
 
-<img src="//b.goeswhere.com/papi-copy.png" style="float: left; padding: 2em"/>
+<img src="/files/papi-copy.png" style="float: left; padding: 2em"/>
 
 Frequently you'll want to copy patches between piles.
 
@@ -30,7 +30,7 @@ Something cool has happened in "yellow" and you want in?  Just copy it across!  
 
 <div style="height: 2em;"></div><hr style="clear: left"/><div style="height: 2em;"></div>
 
-<img src="//b.goeswhere.com/papi-update.png" style="float: left; padding: 2em"/>
+<img src="/files/papi-update.png" style="float: left; padding: 2em"/>
 
 <code>papi re-pile</code> allows you to catch-up with another pile's entire history.
 
@@ -40,7 +40,7 @@ Note how it intelligently works out that the yellow patch in "blue"'s pile was a
 
 <div style="height: 2em;"></div><hr style="clear: left"/><div style="height: 2em;"></div>
 
-<img src="//b.goeswhere.com/papi-bless.png" style="float: left; padding: 2em"/>
+<img src="/files/papi-bless.png" style="float: left; padding: 2em"/>
 
 You'll notice that the pile named "blue" now has all of the outstanding patches; this brings us on to the last command: <code>papi bless</code> marks changes as complete and removes any unnecessary piles.
 
@@ -51,4 +51,4 @@ This results in a nice, clean pile of patches, leaving you ready to continue dev
 
 Spoilers:  <code>papi</code> is just <code>git</code>.
 
-<a href="//b.goeswhere.com/papi.svgz">Images' source</a>.
+<a href="/files/papi.svgz">Images' source</a>.

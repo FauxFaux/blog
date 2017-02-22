@@ -26,7 +26,7 @@ Let's start at the top:
 				<ul>
 					<li>This looks identical, but is actually two <strong>glyphs</strong>; an 'a' (U+0061: "Latin Small Letter A") followed by a U+0300: "Combining Grave Accent".  These two <strong>glyphs</strong> combine to make an identical <strong>symbol</strong>.</li>
 					<li>This is, of course, pointless in this case, but there are many symbols that can only be made with combining characters.  <strong>Normalisation</strong> is the process of simplifying these cases.</li>
-					<li>Don't believe me?  Good.  Not believing what you see is an important stage of debugging.  Open my <a href="https://b.goeswhere.com/aa.html">grave a accent test page</a>, and copy the text into Notepad (or use the provided example), or any other Unicode-safe editor, and press backspace.  It'll remove just the accent, and leave you with a plain 'a'.  Do this with the first <strong>à</strong> and it'll delete the entire thing, leaving nothing.  See?  Different.</li>
+					<li>Don't believe me?  Good.  Not believing what you see is an important stage of debugging.  Open my <a href="/files/aa.html">grave a accent test page</a>, and copy the text into Notepad (or use the provided example), or any other Unicode-safe editor, and press backspace.  It'll remove just the accent, and leave you with a plain 'a'.  Do this with the first <strong>à</strong> and it'll delete the entire thing, leaving nothing.  See?  Different.</li>
 					<li>Side note: The test used to be embedded into this post, but the blog software I use is helpfully normalising the combining character version back to the non-combining-character version, so they actually <strong>were</strong> identical.  Thanks, <a href="https://tom-fitzhenry.me.uk/blog/">tom</a>!</li>
 				</ul>
 			</li>

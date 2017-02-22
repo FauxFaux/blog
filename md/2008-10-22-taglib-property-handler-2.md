@@ -4,7 +4,7 @@ date: 2008-10-22 21:04:51+00:00
 
 Tonight marks the first public release of <a href="http://taglibhandler.sourceforge.net/">Taglib Property Handler</a>, an Explorer extension for Vista that allows it to read metadata from many audio file types:
 
-<img src="//b.goeswhere.com/tlph-casc640.png" alt="Explorer advanced search results for Cascada with TLPH installed" />
+<img src="/files/tlph-casc640.png" alt="Explorer advanced search results for Cascada with TLPH installed" />
 
 Currently, it's fully read-only, so there's minimal risk to your data, and the default install doesn't cause you to lose any existing functionality.
 
