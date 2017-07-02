@@ -6,7 +6,7 @@ It's a sad fact of life that many developers spend a good deal of time staring a
 
 My personal favourite situation is when you get to:
 <pre>Exception in thread "main" java.lang.NullPointerException
-&nbsp;&nbsp;&nbsp;&nbsp;at com.goeswhere.dmnp.linenos.B.foo(<a href="//git.goeswhere.com/?p=dmnp.git;a=blob;f=linenos/src/test/java/com/goeswhere/dmnp/linenos/B.java;h=889c1de3871669b72c3f86abd981419e00f625f3;hb=HEAD">B.java</a>:13)</pre>
+&nbsp;&nbsp;&nbsp;&nbsp;at com.goeswhere.dmnp.linenos.B.foo(<a href="https://github.com/FauxFaux/dmnp/blob/ee152043e2e1bb7b9c0e452d0be6b8dabcc4153a/linenos/src/test/java/com/goeswhere/dmnp/linenos/B.java">B.java</a>:13)</pre>
 
 ..and, line 13 is:
 
