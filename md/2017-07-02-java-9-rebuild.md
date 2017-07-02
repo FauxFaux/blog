@@ -45,7 +45,6 @@ Also, I wanted to mention how cool it was to hack up a dashboard for your
 in [ghetto shell](https://github.com/FauxFaux/debjdk9/blob/d2a4a6c692211f7e819a4909d78d2d060d2a7a24/classify.sh),
 although slightly less ghetto than the
 [previous shell](https://github.com/FauxFaux/debjdk9/blob/fe991263eb22510fa8ac45f2d8978dc667784a46/classify.sh).
-This needs a wide monitor / small font to look okay:
 
 
     Every 2.0s: ./classify.sh
