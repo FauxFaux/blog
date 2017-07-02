@@ -37,6 +37,15 @@ div.post img {
     max-width: 100%
 }
 
+div.post pre {
+    overflow-x: auto;
+}
+
+div.post pre code {
+    word-wrap: normal;
+    white-space: pre;
+}
+
 ul.frontlist {
     padding-left: 1em;
 }
