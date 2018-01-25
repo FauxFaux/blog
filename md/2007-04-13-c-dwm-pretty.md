@@ -10,7 +10,7 @@ B#'s blog shows how to get at the <a href="http://community.bartdesmet.net/blogs
 
 A quick combination (and about an hour trying to work out a decent layout algorithm) gives:
 
-<img src="http://faux.uwcs.co.uk/perm/FDWMlist0.png"/>
+<img src="/files/FDWMlist0.png"/>
 
 I've actually put a <a href="http://faux.uwcs.co.uk/perm/FDWMlist0.exe">FDWMlist.net binary</a> (<a href="http://faux.uwcs.co.uk/perm/FDWMlist0.exe.asc">sig</a>) up, for once, even though it's generally worse than the code I normally hide. :)
 

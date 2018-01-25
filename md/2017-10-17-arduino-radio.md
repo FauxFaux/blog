@@ -1,15 +1,15 @@
-title: Arduino Radio Communication
+title: Arduino radio communication
 slug: arduino-radio
 date: 2017-10-17T18:49:59+01:00
 
 Once again, I have ordered the wrong hardware from eBay.
 
-This time, it was a set of 433MHz radio transcievers for "Arduino".
+This time, it was a set of 433MHz radio transceivers for "Arduino".
 The majority of these come with embedded circuitry for sending and
 receiving bits. The ones I ordered, however, did not.
 
 The transmitter emits power when its data line is powered. The
-reciever emits a varying voltage, which can be ADC'd back into
+receiver emits a varying voltage, which can be ADC'd back into
 a value, ~1 -> ~800. This is not digital.
 
 I decided to do everything from scratch. Everything.
@@ -30,23 +30,23 @@ hoping everything works out. (Narrator: It doesn't work out.)
 The first type of encoding used is called "Manchester Encoding".
 This involves doubling the amount of data you send, but gives you
 lots of scope for detecting problems. For a `1`, you send `01`,
-and for a `10`. That is, if you see a `111` or a `000` in your
-stream, you know something's gone wrong.
+and for a `0`, `10`. That is, if you see a `111` or a `000` in
+your stream, you know something's gone wrong.
 
 So, to send the number `6`, binary `0110`, we're going to send
 `10_01_01_10`. This is why the sending code
 [sends two bits](https://github.com/FauxFaux/arduino-manual-radio/blob/d4a5afc5dea0897d890a96a887f1da1b4de3e728/infrequent_transmit/infrequent_transmit.ino#L16-L22).
 
-The reciever's job is much more horrifying. The receiver has
+The receiver's job is much more horrifying. The receiver has
 "samples" from a radio (a three-digit integer), at unknown time
 intervals. The minimum value read varies wildly with environmental
 conditions, as does the peak value (the value you hope to see
 when the transmitter is sending).
 
-For this purpose, the reciever has multiple levels of filtering.
+For this purpose, the receiver has multiple levels of filtering.
 
 [First](https://github.com/FauxFaux/arduino-manual-radio/blob/d4a5afc5dea0897d890a96a887f1da1b4de3e728/analog_rolling/analog_rolling.ino#L70-L103),
-it takes a `fast` moving average over the recieved signal,
+it takes a `fast` moving average over the received signal,
 and a "slow" moving average over the `background` noise (the average
 of all samples), and our guess as to the `high` value.
 If the `fast` moving average is greater than half way up this band,
@@ -81,12 +81,16 @@ ignoring single errors and overly long runs.
 As Arduino's, and the radio hardware, don't do anything like what
 you tell them, it's impossible to know in advance how long (in
 milliseconds) a pulse will be, or how long of a run represents a
-"1".
+`1`.
+
+Fixing this problem is called "clock recovery", we need to guess
+how long a pulse is according to us, regardless of what the sender
+thinks it's doing.
 
 Manchester encoding helps with clock recovery. The transmitter
-sends a ["premable"](https://github.com/FauxFaux/arduino-manual-radio/blob/d4a5afc5dea0897d890a96a887f1da1b4de3e728/infrequent_transmit/infrequent_transmit.ino#L48-L56)
-of zeros, which are encoded as "10101010", that is, a series of
-pulses. The reciever [uses this](https://github.com/FauxFaux/arduino-manual-radio/blob/d4a5afc5dea0897d890a96a887f1da1b4de3e728/analog_rolling/analog_rolling.ino#L151-L170)
+sends a ["preamble"](https://github.com/FauxFaux/arduino-manual-radio/blob/d4a5afc5dea0897d890a96a887f1da1b4de3e728/infrequent_transmit/infrequent_transmit.ino#L48-L56)
+of zeros, which are encoded as `10101010`, that is, a series of
+pulses. The receiver [uses this](https://github.com/FauxFaux/arduino-manual-radio/blob/d4a5afc5dea0897d890a96a887f1da1b4de3e728/analog_rolling/analog_rolling.ino#L151-L170)
 to guess how long a pulse is, and to check the guess is correct.
 
 This code is looking for a high (and keeping the length of this
@@ -113,14 +117,15 @@ The [decoder waits for this condition to happen](https://github.com/FauxFaux/ard
 then starts to [read bytes](https://github.com/FauxFaux/arduino-manual-radio/blob/d4a5afc5dea0897d890a96a887f1da1b4de3e728/analog_rolling/analog_rolling.ino#L247-L266).
 
 The bytes are transmitted as 8-bits (MSB last, unlike normal),
-with a parity bit. This explains the [last code](https://github.com/FauxFaux/arduino-manual-radio/blob/d4a5afc5dea0897d890a96a887f1da1b4de3e728/infrequent_transmit/infrequent_transmit.ino#L24-L30)
+with a parity bit. This explains the
+[last piece of unexplained code](https://github.com/FauxFaux/arduino-manual-radio/blob/d4a5afc5dea0897d890a96a887f1da1b4de3e728/infrequent_transmit/infrequent_transmit.ino#L24-L30)
 in the transmitter!
 
 There's also a debugger for this, in `DEBUG_DECODE`. Here,
 we can see it waiting for `XX` (the second accepted `X` is
-bracketed, then reading the next nine bits and checking the
+bracketed), then reading the next nine bits and checking the
 parity. Note that there's no synchronisation for the second
-byte, we're still synchronised:
+byte, as it's assumed we're still synchronised:
 
     ..X(X)...XX.... => 24 (parity: 00)
     X..XX..X. => 153 (parity: 00)
@@ -138,7 +143,7 @@ encoded "24". Argh! Why would you pick this sequence for
 temperatures?! Why?
 
 The actual data being sent is a temperature reading, encoded
-as two bytes, `(int)celsius`, and the decimal part as a single
+as two bytes, `(int)Celsius`, and the decimal part as a single
 byte.
 
 As corruption was still getting through at this level, an
@@ -152,6 +157,9 @@ Shame the temperature sensor varies (by about 2C) from my other
 sensors. It also loses about half the messages to errors, as
 there's no error recovery at all.
 
+Wasn't that fun?
+
+---
 
  * What would a normal software decoder look like for this?
 
