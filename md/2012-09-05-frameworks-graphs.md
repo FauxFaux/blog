@@ -10,7 +10,7 @@ A framework (or library?) exists to save you from doing common, repetitive tasks
 <ul>
 <li>If you decide to write all this stuff from scratch, you're going to be spending a lot of time developing boring, repetitive code (but maybe you're still doing it better than other people?), and you're not going to be delivering anything fancy.  Eventually, though, you'll get up to speed, and your well-understood, targeted framework/library will assist you in every way.</li>
 
-<li>If you pick the framework route, it takes you a short amount of time to get one of the damn demos to start, then you get a whole load of stuff for free, but, eventually, you run into things the framework can't or won't do for you, and you have to work out how to ram your workflow down it's stupid throat aargh.  Your delivery speed plummets, but eventually you'll get it working, and you'll have some free good design and code reuse in there.  Now, with a decent grounding in how the framework works, and your extra flexibility layer, you can get back to the good stuff.</li>
+<li>If you pick the framework route, it takes you a short amount of time to get one of the damn demos to start, then you get a whole load of stuff for free, but, eventually, you run into things the framework can't or won't do for you, and you have to work out how to ram your workflow down its stupid throat aargh.  Your delivery speed plummets, but eventually you'll get it working, and you'll have some free good design and code reuse in there.  Now, with a decent grounding in how the framework works, and your extra flexibility layer, you can get back to the good stuff.</li>
 </ul>
 
 This results in roughly The Framework Graph, shown here, reproduced (in Paint) without permission.

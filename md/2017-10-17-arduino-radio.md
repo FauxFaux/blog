@@ -78,7 +78,7 @@ the length of a bit, it does not matter that these are not well
 aligned. We then count the length of runs of each state we see,
 ignoring single errors and overly long runs.
 
-As Arduino's, and the radio hardware, don't do anything like what
+As Arduinos, and the radio hardware, don't do anything like what
 you tell them, it's impossible to know in advance how long (in
 milliseconds) a pulse will be, or how long of a run represents a
 `1`.
