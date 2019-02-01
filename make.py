@@ -1,30 +1,26 @@
 #!/usr/bin/env python3
 
-from collections import namedtuple, defaultdict
-from glob import glob
 import os
 import re
 import shutil
-
+from collections import namedtuple, defaultdict
 from datetime import datetime
-from dateutil import parser
-
-# python3-markdown
-from markdown import markdown
+from glob import glob
 
 # python3-jinja2
 import jinja2
-
-# pip3 install --user feedgen
-from feedgen.feed import FeedGenerator
 import pytz
-
 # python3-slimmer
 import slimmer
+from dateutil import parser
+# pip3 install --user feedgen
+from feedgen.feed import FeedGenerator
+# python3-markdown
+from markdown import markdown
 
 templates = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
-feed_root='https://blog.goeswhere.com'
+feed_root = 'https://blog.goeswhere.com'
 fg = FeedGenerator()
 fg.id(feed_root)
 fg.title('Faux\' Blog')
@@ -33,9 +29,10 @@ fg.language('en')
 fg.link(href=feed_root, rel='alternate')
 fg.description('Faux\' (mostly) technical blog')
 
-tz=pytz.timezone('Europe/London')
+tz = pytz.timezone('Europe/London')
 
 Item = namedtuple('Item', ['title', 'slug', 'date', 'content', 'mtime'])
+
 
 def open_out(path):
     path = 'out/' + path
@@ -44,6 +41,7 @@ def open_out(path):
     except FileExistsError:
         pass
     return open(path, 'w')
+
 
 files = {}
 for name in glob("md/*.md"):
@@ -59,24 +57,27 @@ for name in glob("md/*.md"):
         if not slug:
             raise 'No slug: ' + name
         files[slug] = Item(headers['title'], slug,
-                parser.parse(headers['date']), f.read(),
-                os.path.getmtime(name))
+                           parser.parse(headers['date']), f.read(),
+                           os.path.getmtime(name))
+
 
 def url_of(item):
     return item.date.strftime("/%Y/%m/") + item.slug + "/"
 
+
 def write_page(path, template, title, **args):
     if not title:
-        title='Faux\' blog'
+        title = 'Faux\' blog'
     else:
-        title='Faux\' blog: ' + title
+        title = 'Faux\' blog: ' + title
 
     with open_out(path) as f:
         f.write(
-                slimmer.html_slimmer(
+            slimmer.html_slimmer(
                 templates.get_template('index.html').render(
                     content=templates.get_template(template).render(args),
                     title=title)))
+
 
 def render_post(item, full=False):
     content = item.content
@@ -89,43 +90,46 @@ def render_post(item, full=False):
             content = re.sub('<!--more-->', '<a name="more"></a>', content)
 
     return templates.get_template('post.html').render(
-            content=markdown(content),
-            url=url_of(item),
-            date=item.date.strftime('%Y-%m-%d'),
-            more=more,
-            title=item.title)
+        content=markdown(content),
+        url=url_of(item),
+        date=item.date.strftime('%Y-%m-%d'),
+        more=more,
+        title=item.title)
+
 
 for slug, item in files.items():
     sub = url_of(item)
     write_page(sub + 'index.html', 'single.html', item.title,
-        render_post=render_post,
-        item=item)
+               render_post=render_post,
+               item=item)
+
 
 def write_list(base_path, items, title):
-    items=sorted(items, reverse=True, key=lambda item: item.date)
-    per_page=6
-    chunks=[items[x:x+per_page] for x in range(0, len(items), per_page)]
+    items = sorted(items, reverse=True, key=lambda item: item.date)
+    per_page = 6
+    chunks = [items[x:x + per_page] for x in range(0, len(items), per_page)]
     for idx, chunk in enumerate(chunks):
-        path=base_path
-        prev=None
-        next=None
+        path = base_path
+        prev = None
+        next = None
         if 0 != idx:
-            path=path + 'page/' + str(idx+1) + '/'
+            path = path + 'page/' + str(idx + 1) + '/'
             if 1 != idx:
-                prev=base_path + 'page/' + str(idx) + '/'
+                prev = base_path + 'page/' + str(idx) + '/'
             else:
-                prev=base_path
+                prev = base_path
 
-        if len(chunks)-1 != idx:
-            next=base_path + 'page/' + str(idx+2) + '/'
+        if len(chunks) - 1 != idx:
+            next = base_path + 'page/' + str(idx + 2) + '/'
 
         write_page(path + 'index.html', 'list.html', title,
-                items=chunk,
-                next=next, prev=prev,
-                render_post=render_post)
+                   items=chunk,
+                   next=next, prev=prev,
+                   render_post=render_post)
 
 
 write_list('all/', files.values(), None)
+
 
 def by_date(format, items):
     ret = defaultdict(list)
@@ -133,23 +137,26 @@ def by_date(format, items):
         ret[item.date.strftime(format)].append(item)
     return ret
 
+
 for by_dates in [by_date('%Y/%m/', files.values()), by_date('%Y/', files.values())]:
     for month, items in by_dates.items():
         write_list(month, items, month)
+
 
 def write_index(items):
     by_year = by_date('%Y', sorted(items, reverse=True, key=lambda item: item.date))
 
     write_page('index.html', 'front.html', None,
-            by_year=sorted(by_year.items(), reverse=True, key=lambda pair: pair[0]))
+               by_year=sorted(by_year.items(), reverse=True, key=lambda pair: pair[0]))
+
 
 write_index(files.values())
 
-in_feed=sorted(files.values(), reverse=True, key=lambda item: item.date)[0:10]
+in_feed = sorted(files.values(), reverse=True, key=lambda item: item.date)[0:10]
 
 for item in in_feed:
-    fe=fg.add_entry()
-    full_url=feed_root+url_of(item)
+    fe = fg.add_entry()
+    full_url = feed_root + url_of(item)
     fe.id(full_url)
     fe.link(href=full_url, rel='alternate')
     fe.title(item.title)
