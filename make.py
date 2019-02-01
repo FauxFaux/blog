@@ -6,7 +6,6 @@ import os
 import re
 import shutil
 
-#python3-datetime
 from datetime import datetime
 from dateutil import parser
 
@@ -16,7 +15,7 @@ from markdown import markdown
 # python3-jinja2
 import jinja2
 
-# easy_install3 --user feedgen # prints errors but seems to work
+# pip3 install --user feedgen
 from feedgen.feed import FeedGenerator
 import pytz
 
