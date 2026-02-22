@@ -11,7 +11,7 @@ from glob import glob
 import jinja2
 import pytz
 # python3-slimmer
-import slimmer
+#import slimmer
 from dateutil import parser
 # pip3 install --user feedgen
 from feedgen.feed import FeedGenerator
@@ -73,10 +73,10 @@ def write_page(path, template, title, **args):
 
     with open_out(path) as f:
         f.write(
-            slimmer.html_slimmer(
+            #slimmer.html_slimmer(
                 templates.get_template('index.html').render(
                     content=templates.get_template(template).render(args),
-                    title=title)))
+                    title=title))
 
 
 def render_post(item, full=False):
@@ -172,6 +172,6 @@ fg.rss_file('out/feed/index.xml')
 
 for static in ['main.css']:
     with open_out('static/' + static) as f:
-        f.write(slimmer.css_slimmer(templates.get_template(static).render()))
+        f.write((templates.get_template(static).render()))
 
 shutil.copytree('images', 'out/images')
